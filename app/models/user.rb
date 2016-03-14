@@ -7,5 +7,9 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :appointments
   has_one :company
+
+  validates :first_name, :last_name, :phone, presence: true
+  validates :phone, format: { with: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, message: "Please enter phone number with xxx-xxx-xxxx" }
+
   
 end
