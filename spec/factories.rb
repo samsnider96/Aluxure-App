@@ -23,4 +23,9 @@ FactoryGirl.define do
     email "example@example.com"
   end
 
+  factory :comment do
+    text "lorem ipsum this is a text"
+    appointment_request_id 1
+  end
+
 end
