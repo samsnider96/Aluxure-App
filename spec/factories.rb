@@ -35,4 +35,9 @@ FactoryGirl.define do
     end_time DateTime.now
   end
 
+  factory :appointment_item do
+    appointment_request_id 1
+    item_id 1
+  end
+
 end
