@@ -35,6 +35,9 @@ gem 'factory_girl_rails'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# pretty forms
+gem 'bootstrap_form'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
