@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314192445) do
+ActiveRecord::Schema.define(version: 20160314193622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160314192445) do
   create_table "appointment_requests", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "user_id"
-    t.integer  "comment_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean  "approved",   default: false

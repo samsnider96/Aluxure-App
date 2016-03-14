@@ -28,4 +28,11 @@ FactoryGirl.define do
     appointment_request_id 1
   end
 
+  factory :appointment_request do
+    company_id 1
+    user_id 1
+    start_time DateTime.yesterday
+    end_time DateTime.now
+  end
+
 end
