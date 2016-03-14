@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>aLuxuRe</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<%= render 'layouts/nav' %>
+
+<%= render 'layouts/carousel' %>
+
+<%= render 'layouts/below_carousel' %>
+
+<%= render 'layouts/recent_projects' %>
+
+<%= render 'layouts/footer' %>
+
+</body>
+</html>
