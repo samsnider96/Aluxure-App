@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315014308) do
+ActiveRecord::Schema.define(version: 20160315060436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160315014308) do
   end
 
   create_table "product_images", force: :cascade do |t|
-    t.integer  "product_id"
+    t.integer  "item_id"
     t.string   "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(version: 20160315014308) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "first_name"
-    t.integer  "last_name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "phone"
     t.integer  "company_id"
   end

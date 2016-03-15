@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'dashboard#index'
 
   resources :items
+  resources :product_images
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

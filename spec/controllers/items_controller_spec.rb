@@ -26,4 +26,10 @@ RSpec.describe ItemsController, type: :controller do
     post :create, { item: valid_attributes }
     expect(Item.count).to eq(1)
   end
+
+  # it "should pass correct param when new item is created" do
+  #   sign_in FactoryGirl.create(:user)
+  #   post :create, { item: valid_attributes }
+  #   controller.params[:item_id].should_not be_nil
+  # end
 end

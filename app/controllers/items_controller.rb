@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @items = current_user.items.all
+  end
+
   def new
     @item = Item.new
   end
@@ -8,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.create(item_params)
     if @item.save
-      redirect_to dashboard_path
+      redirect_to new_product_image_path(item_id: @item.id)
     else
       render :new, :status => :unprocessable_entity
     end
