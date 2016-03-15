@@ -1,0 +1,51 @@
+<h1>Select Items</h1>
+
+<div class="list-group">
+
+  <% @items.each do |item| %>
+
+    <a class="list-group-item" id="item_<%= item.id %>">
+      <div class="row">
+
+        <div class="col-xs-2">
+          <div class="thumbnail">
+            <% if item.product_images.empty? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-10">
+          <p><%= item.description %></p>
+        </div>
+
+      </div>
+    </a>
+
+    <script>
+
+    $("#item_<%= item.id %>").click(function(){
+      var item_id = "<%= item.id %>";
+
+      // set to active
+      $(this).toggleClass("active");
+
+      // push in array if it doesn't exist already, otherwise pop the element
+      if ($.inArray(item_id, items) === -1) {
+        items.push(item_id);
+      } else {
+        items.pop();
+      }
+    })
+
+    </script>
+
+  <% end %>
+
+</div>
+
+<script type="text/javascript">
+var items = [];
+</script>

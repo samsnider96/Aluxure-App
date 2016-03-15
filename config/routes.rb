@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :items
   resources :product_images
+
+  resources :item_selections, only: [:new, :create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
