@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :item_selections, only: [:new, :create]
   resources :company_selections, only: [:new, :create]
 
-  resources :appointment_requests, only: [:index, :new, :create]
+  resources :appointment_requests do
+    resources :comments, only: [:new, :create, :destroy]
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

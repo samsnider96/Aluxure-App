@@ -3,6 +3,12 @@ class AppointmentRequestsController < ApplicationController
     @appointment_requests = current_user.appointment_requests.all
   end
 
+  def show
+    @appointment_request = AppointmentRequest.find(params[:id])
+    @company = Company.find(@appointment_request.company_id)
+    @appointment_items = @appointment_request.appointment_items
+  end
+
   def new
     @company = Company.find(params[:company_id])
     @items = []
@@ -10,8 +16,13 @@ class AppointmentRequestsController < ApplicationController
   end
 
   def create
-    @appointment_request = current_user.appointment_requests.create(appointment_request_params)
-    params[:items].each{ |item| @appointment_request.appointment_items.create(item_id: item.id) } # create appointment item objects for each item
+    @appointment_request = AppointmentRequest.create(appointment_request_params)
+    if @appointment_request.save
+      params[:items].each{ |item| @appointment_request.appointment_items.create(item_id: item) } # create appointment item objects for each item
+      redirect_to appointment_requests_path
+    else
+      redirect_to :back
+    end
   end
 
   private

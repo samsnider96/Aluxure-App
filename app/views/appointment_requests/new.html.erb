@@ -24,7 +24,7 @@
   </div>
 <% end %>
 
-<%= simple_form_for appointment_requests_path(items: @items), method: :post do |f| %>
+<%= simple_form_for AppointmentRequest.new, url: appointment_requests_path(items: @items), method: :post do |f| %>
   <%= f.input :start_time, as: :datetime_picker %>
   <%= f.input :end_time, as: :datetime_picker %>
   <%= f.input :company_id, as: :hidden, input_html: { value: @company.id } %>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :items
-  has_many :appointments
+  has_many :appointment_requests
   has_one :company
 
   validates :first_name, :last_name, :phone, presence: true
