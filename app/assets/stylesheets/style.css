@@ -222,7 +222,7 @@ blockquote p {
 }
 
 .dropdown-menu{
-  background-color: #16A085;
+/*  background-color: #16A085;*/
   border: none;
   border-radius: 2px;
   -webkit-border-radius: 2px;

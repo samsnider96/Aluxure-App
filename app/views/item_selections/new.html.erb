@@ -57,7 +57,7 @@ $("#item_select_next").click(function(){
       item_ids: items
   },
   function(data, status){
-      window.location.replace("/");
+      window.location.replace("/company_selections/new?item_ids=" + items);
   });
 })
 </script>

@@ -1,0 +1,62 @@
+<h1>Select Companies</h1>
+
+<div class="list-group">
+
+  <% @companies.each do |company| %>
+
+    <a class="list-group-item" id="company_<%= company.id %>">
+      <div class="row">
+
+        <div class="col-xs-2">
+          <div class="thumbnail">
+            <% if company.photo.nil? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag company.photo.thumb.url, class: 'item_image' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-10">
+          <p><%= company.description %></p>
+        </div>
+
+      </div>
+    </a>
+
+    <script>
+
+    $("#company_<%= company.id %>").click(function(){
+      var company_id = "<%= company.id %>";
+
+      // set to active
+      $('.list-group-item').removeClass("active");
+      $(this).toggleClass("active");
+
+      // push in array if it doesn't exist already, otherwise pop the element
+      company = "<%= company.id %>"
+    })
+
+    </script>
+
+  <% end %>
+
+</div>
+
+<button class="btn btn-success btn-lg btn-block" id="company_select_next">Next</button>
+
+<script type="text/javascript">
+var company;
+
+// get params
+var queries = {};
+$.each(document.location.search.substr(1).split('&'),function(c,q){
+  var i = q.split('=');
+  queries[i[0].toString()] = i[1].toString();
+});
+
+$("#company_select_next").click(function(){
+  window.location.replace("/appointment_requests/new?item_ids=" + queries["item_ids"] + "&company_id=" + company);
+})
+
+</script>

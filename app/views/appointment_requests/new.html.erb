@@ -1,0 +1,33 @@
+<h1>Appointment for <%= @company.name %></h1>
+
+<% @items.each do |item| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+
+        <div class="col-xs-2">
+          <div class="thumbnail">
+            <% if item.product_images.empty? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-10">
+          <p><%= item.description %></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= simple_form_for appointment_requests_path(items: @items), method: :post do |f| %>
+  <%= f.input :start_time, as: :datetime_picker %>
+  <%= f.input :end_time, as: :datetime_picker %>
+  <%= f.input :company_id, as: :hidden, input_html: { value: @company.id } %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block' %>
+<% end %>
