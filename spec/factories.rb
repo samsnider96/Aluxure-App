@@ -32,6 +32,17 @@ FactoryGirl.define do
     user_id 1
   end
 
+  factory :item do
+    user_id 1
+    brand "brand"
+    category "Shirt"
+    color "Color"
+    size "Size"
+    material "Material"
+    condition "normal"
+    description "blah"
+  end
+
   factory :appointment_request do
     company_id 1
     user_id 1

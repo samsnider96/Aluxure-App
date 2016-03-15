@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_owner?, only: [:edit, :update]
 
   def index
     @items = current_user.items.order(updated_at: :desc)
@@ -36,6 +37,12 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def is_owner?
+    return if Item.find(params[:id]).user_id == current_user.id
+    flash[:danger] = "Unauthorized"
+    redirect_to items_path
+  end
 
   def item_params
     params.require(:item).permit(:user_id, :brand, :type, :color, :size, :material, :condition, :description)
