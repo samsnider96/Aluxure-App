@@ -7,6 +7,7 @@ class AppointmentRequestsController < ApplicationController
     @appointment_request = AppointmentRequest.find(params[:id])
     @company = Company.find(@appointment_request.company_id)
     @appointment_items = @appointment_request.appointment_items
+    @comments = @appointment_request.comments.order(created_at: :desc)
   end
 
   def new
@@ -21,6 +22,7 @@ class AppointmentRequestsController < ApplicationController
       params[:items].each{ |item| @appointment_request.appointment_items.create(item_id: item) } # create appointment item objects for each item
       redirect_to appointment_requests_path
     else
+      flash[:danger] = @appointment_request.errors.full_messages[0]
       redirect_to :back
     end
   end

@@ -46,18 +46,23 @@
 
 </div>
 
-<button class="btn btn-success btn-lg btn-block" id="item_select_next">Next</button>
+<button class="btn btn-success btn-lg btn-block" id="item_select_next"><i class="fa fa-chevron-circle-right"></i> Next</button>
 
 <script type="text/javascript">
 var items = [];
 
 $("#item_select_next").click(function(){
-  $.post("/item_selections",
-  {
-      item_ids: items
-  },
-  function(data, status){
-      window.location.replace("/company_selections/new?item_ids=" + items);
-  });
+  if (items.length === 0) {
+    alert("Please select atleast 1 item");
+  } 
+  else {
+    $.post("/item_selections",
+    {
+        item_ids: items
+    },
+    function(data, status){
+        window.location.replace("/company_selections/new?item_ids=" + items);
+    });
+  }
 })
 </script>

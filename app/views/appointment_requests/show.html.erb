@@ -24,35 +24,61 @@
   <!-- col-md-4 -->
   
   <div class="col-xs-12 col-md-8">
-    <% @appointment_items.each do |appointment_item| %>
-      <% item = Item.find(appointment_item.item_id) %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>Items</h3>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-
-            <div class="col-xs-2">
-              <div class="thumbnail">
-                <% if item.product_images.empty? %>
-                  <%= image_tag 'shirt.png', class: 'item_image_sm' %>
-                <% else %>
-                  <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="col-xs-10">
-              <p><%= item.description %></p>
-            </div>
-
-          </div>
-        </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Items</h3>
       </div>
-    <% end %>
+      <% @appointment_items.each do |appointment_item| %>
+        <% item = Item.find(appointment_item.item_id) %>
+        
+
+          <div class="panel-body">
+            <div class="row">
+
+              <div class="col-xs-2">
+                <div class="thumbnail">
+                  <% if item.product_images.empty? %>
+                    <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+                  <% else %>
+                    <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="col-xs-10">
+                <p><%= item.description %></p>
+              </div>
+
+            </div>
+            <!-- row -->
+          </div>
+          <!-- panel body -->
+      <% end %>
+      <!-- end loop -->
+    </div>
+      <!-- panel-default -->
   </div>
-
-
+  <!-- col-md-8 -->
 </div>
 <!-- row -->
+
+<h1>Comments</h1>
+
+<%= simple_form_for Comment.new, url: appointment_request_comments_path(appointment_request_id: params[:id]), method: :post do |f| %>
+  <%= f.input :text %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  <%= f.submit 'Submit', class: 'btn btn-success btn-block', data: { disable_with: 'Submitted' } %>
+<% end %>
+
+<hr>
+<% @comments.each do |comment| %>
+  <p><%= comment.text %><span class="pull-right"><small><%= fullname(User.find(comment.user_id)) %></small></span></p>
+  <p><span class="pull-right"><small><%= comment.created_at.strftime('%m/%d %T') %></small></span></p>
+  <br class="clearfix">
+  <hr>
+<% end %>
+
+
+
+
+

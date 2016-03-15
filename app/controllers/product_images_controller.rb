@@ -12,7 +12,7 @@ class ProductImagesController < ApplicationController
       flash[:success] = "Photo Added"
       redirect_to new_product_image_path(item_id: params[:product_image][:item_id])
     else
-      flash[:error] = "Invalid Photo"
+      flash[:danger] = "Invalid Photo"
       render :new
     end
   end

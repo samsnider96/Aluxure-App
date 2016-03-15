@@ -43,7 +43,7 @@
 
 </div>
 
-<button class="btn btn-success btn-lg btn-block" id="company_select_next">Next</button>
+<button class="btn btn-success btn-lg btn-block" id="company_select_next"><i class="fa fa-chevron-circle-right"></i> Next</button>
 
 <script type="text/javascript">
 var company;
@@ -56,7 +56,12 @@ $.each(document.location.search.substr(1).split('&'),function(c,q){
 });
 
 $("#company_select_next").click(function(){
-  window.location.replace("/appointment_requests/new?item_ids=" + queries["item_ids"] + "&company_id=" + company);
-})
+  if (company == null) {
+    alert("Please select a company");
+  }
+  else {
+    window.location.replace("/appointment_requests/new?item_ids=" + queries["item_ids"] + "&company_id=" + company);
+  }
+});
 
 </script>

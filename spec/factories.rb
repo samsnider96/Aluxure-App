@@ -2,6 +2,7 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
   factory :user do
+    id 1
     first_name "John"
     last_name  "Doe"
     sequence(:email, 100) { |n| "person#{n}@example.com" }
@@ -28,6 +29,7 @@ FactoryGirl.define do
   factory :comment do
     text "lorem ipsum this is a text"
     appointment_request_id 1
+    user_id 1
   end
 
   factory :appointment_request do
