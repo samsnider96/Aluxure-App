@@ -9,8 +9,7 @@ def valid_attributes
     size: "Size",
     material: "Material",
     condition: "normal",
-    description: "blah",
-    photo: "photo"
+    description: "blah"
   }
 end
 

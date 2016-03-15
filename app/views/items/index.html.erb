@@ -2,7 +2,30 @@
 <div class="row">
 
   <% @items.each do |item| %>
-  <div class="col-xs-12 col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+
+        <div class="col-xs-2">
+          <div class="thumbnail">
+            <% if item.product_images.empty? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-10">
+          <p><%= item.description %></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="col-xs-12 col-md-4">
     <div class="panel panel-default">
       <div class="panel-body">
         <% if item.product_images.empty? %>
@@ -14,7 +37,7 @@
       </div>
       <div class="panel-footer">by <%= fullname(User.find(item.user_id)) %></div>
     </div>
-  </div>
+  </div> -->
   <% end %>
 
 </div>

@@ -1,3 +1,5 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
   factory :user do
     first_name "John"
@@ -38,6 +40,11 @@ FactoryGirl.define do
   factory :appointment_item do
     appointment_request_id 1
     item_id 1
+  end
+
+  factory :product_image do 
+    item_id 1
+    photo { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'files', 'test.jpg')) }
   end
 
 end
