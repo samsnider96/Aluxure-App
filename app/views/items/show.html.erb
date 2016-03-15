@@ -1,0 +1,33 @@
+<div class="well">
+  <%= link_to '<i class="fa fa-arrow-circle-left"></i> All Items'.html_safe, items_path %>
+  <h1>Item Details</h1>
+
+  <div class="row">
+    <% @images.each do |images| %>
+      <div class="col-xs-4">
+        <div class="thumbnail">
+            <% if @images.empty? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag images.photo.thumb.url, class: 'item_image' %>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, new_product_image_path(item_id: @item.id) %>
+  <hr>
+  <ul style="list-style-type:none;padding-left:0px">
+  <li><strong>Brand:</strong> <%= @item.brand %></li>
+  <li><strong>Category:</strong> <%= @item.category %></li>
+  <li><strong>Color:</strong> <%= @item.color %></li>
+  <li><strong>Size:</strong> <%= @item.size %></li>
+  <li><strong>Material:</strong> <%= @item.material %></li>
+  <li><strong>Condition:</strong> <%= @item.condition %></li>
+  <li><strong>Description:</strong> <%= @item.description %></li>
+  </ul>
+
+  <span class="pull-right"><%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(@item) if @item(user_id: current_user.id) %></span>
+  <br class="clearfix">
+</div>

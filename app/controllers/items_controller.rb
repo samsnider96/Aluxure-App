@@ -2,7 +2,12 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @items = current_user.items.all
+    @items = current_user.items.order(updated_at: :desc)
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @images = ProductImage.where(item_id: @item.id)
   end
 
   def new
@@ -16,6 +21,18 @@ class ItemsController < ApplicationController
     else
       render :new, :status => :unprocessable_entity
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    return redirect_to items_path if @item.save
+    flash[:danger] = "Woops, looks like something went wrong. Please try again."
+    render :edit
   end
 
   private

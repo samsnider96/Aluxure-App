@@ -18,26 +18,13 @@
 
         <div class="col-xs-10">
           <p><%= item.description %></p>
+          <span class="pull-right"><%= link_to 'View', item_path(item) %> <%= link_to 'Edit', edit_item_path(item) if item(user_id: current_user.id) %></span>
         </div>
 
       </div>
     </div>
   </div>
-
-
-  <!-- <div class="col-xs-12 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <% if item.product_images.empty? %>
-          <%= image_tag 'shirt.png', class: 'item_image' %>
-        <% else %>
-          <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
-        <% end %>
-        <p><%= item.description %></p>
-      </div>
-      <div class="panel-footer">by <%= fullname(User.find(item.user_id)) %></div>
-    </div>
-  </div> -->
+  
   <% end %>
 
 </div>

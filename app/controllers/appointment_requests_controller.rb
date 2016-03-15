@@ -1,13 +1,13 @@
 class AppointmentRequestsController < ApplicationController
   def index
-    @appointment_requests = current_user.appointment_requests.all
+    @appointment_requests = current_user.appointment_requests.order(updated_at: :desc)
   end
 
   def show
     @appointment_request = AppointmentRequest.find(params[:id])
     @company = Company.find(@appointment_request.company_id)
     @appointment_items = @appointment_request.appointment_items
-    @comments = @appointment_request.comments.order(created_at: :desc)
+    @comments = @appointment_request.comments.order(updated_at: :desc)
   end
 
   def new

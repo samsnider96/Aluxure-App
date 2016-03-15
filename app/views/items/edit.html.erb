@@ -1,0 +1,12 @@
+<h1>Edit Details</h1>
+
+<%= simple_form_for @item, method: :put do |f| %>
+  <%= f.input :brand %>
+  <%= f.input :category %>
+  <%= f.input :color %>
+  <%= f.input :size %>
+  <%= f.input :material %>
+  <%= f.input :condition %>
+  <%= f.input :description %>
+  <%= f.submit 'Submit', class: 'btn btn-success' %>
+<% end %>
