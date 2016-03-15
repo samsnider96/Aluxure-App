@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'devise'
 
 
 RSpec.describe DashboardController, type: :controller do

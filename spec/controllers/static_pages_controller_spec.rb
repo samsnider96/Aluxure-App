@@ -7,6 +7,17 @@ RSpec.describe StaticPagesController, type: :controller do
         controller: "static_pages",
         action: "index")
     end
+
+    it "should redirect to dashboard if user is signed in" do
+      sign_in FactoryGirl.create(:user)
+      get :index
+      expect(response).to have_http_status(302)
+    end
+
+    it "shouldn't redirect to dashboard if user isn't signed in" do
+      get :index
+      expect(response).to have_http_status(200)
+    end
   end
 
 
