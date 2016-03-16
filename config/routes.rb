@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
   resources :companies
   resources :appointment_approvals, only: [:create]
+
+  get 'privacy_policy' => 'static_pages#privacy_policy'
+  get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

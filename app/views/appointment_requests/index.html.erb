@@ -9,7 +9,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3><%= Company.find(incoming_request.company_id).name %>
-          <span class="pull-right"><%= incoming_request.approved ? '<i class="fa fa-check-circle"></i>'.html_safe : '<i class="fa fa-hourglass-half"></i>'.html_safe %></span>
+          <span class="pull-right"><%= incoming_request.approved ? '<i class="fa fa-check-circle" style="color:#05CE05;"></i>1'.html_safe : '<i class="fa fa-hourglass-half"></i>'.html_safe %></span>
           </h3>
       </div>
       <div class="panel-body">
@@ -18,7 +18,7 @@
           <li><strong>End Time:</strong> <%= incoming_request.end_time %></li>
           <li><strong>Status:</strong> <%= incoming_request.approved ? "Approved" : "Waiting" %></li>
         </ul>
-        <%= link_to 'View', appointment_request_path(incoming_request), class: 'btn btn-danger btn-block' %>
+        <%= link_to 'Details', appointment_request_path(incoming_request), class: 'btn btn-danger btn-block' %>
         <%= link_to 'Accept', appointment_approvals_path(appointment_request_id: incoming_request.id), method: :post, class: 'btn btn-success btn-block' unless incoming_request.approved %>
         <%= "<button class='btn btn-success btn-block'><i class='fa fa-check-circle'></i> Approved!</button>".html_safe if incoming_request.approved %>
 
@@ -33,6 +33,7 @@
 
 
 <h1>My Appointments</h1>
+<%= link_to ('<i class="fa fa-calendar"></i> Schedule New Appointment').html_safe, new_item_selection_path %>
 <hr>
 <h3><%= "You have no appointments at this time. Click <a href='/item_selections/new'>here</a> to make a new appointment request.".html_safe if @appointment_requests.empty? %></h3>
 <div class="row">
@@ -42,7 +43,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3><%= Company.find(appointment_request.company_id).name %>
-          <span class="pull-right"><%= appointment_request.approved ? '<i class="fa fa-check-circle"></i>'.html_safe : '<i class="fa fa-hourglass-half"></i>'.html_safe %></span>
+          <span class="pull-right"><%= appointment_request.approved ? '<i class="fa fa-check-circle" style="color:#05CE05;"></i>'.html_safe : '<i class="fa fa-hourglass-half"></i>'.html_safe %></span>
           </h3>
       </div>
       <div class="panel-body">
@@ -51,7 +52,7 @@
           <li><strong>End Time:</strong> <%= appointment_request.end_time %></li>
           <li><strong>Status:</strong> <%= appointment_request.approved ? "Approved" : "Waiting" %></li>
         </ul>
-        <%= link_to 'View', appointment_request_path(appointment_request), class: 'btn btn-danger btn-block' %>
+        <%= link_to 'Details', appointment_request_path(appointment_request), class: 'btn btn-danger btn-block' %>
       </div>
     </div>
 

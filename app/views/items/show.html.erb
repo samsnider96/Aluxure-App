@@ -16,7 +16,7 @@
     <% end %>
   </div>
   <br>
-  <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, new_product_image_path(item_id: @item.id) %>
+  <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, new_product_image_path(item_id: @item.id) if @item.user_id == current_user.id %>
   <hr>
   <ul style="list-style-type:none;padding-left:0px">
   <li><strong>Brand:</strong> <%= @item.brand %></li>
