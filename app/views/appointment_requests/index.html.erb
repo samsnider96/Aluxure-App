@@ -1,7 +1,7 @@
 <% if current_user.company_id %>
 <h1>Appointment Requests</h1>
 <hr>
-<h3><%= "There are no incoming requests at this time." if @incoming_requests.nil? %></h3>
+<h3><%= "There are no incoming requests at this time." if @incoming_requests.empty? %></h3>
 <div class="row">
   <% @incoming_requests.each do |incoming_request| %>
   <div class="col-xs-12 col-md-4">

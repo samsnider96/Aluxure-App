@@ -17,5 +17,5 @@
   <%= f.label "Company Image" %>
   <%= f.file_field :photo %>
   <br>
-  <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block' %>
+  <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Please wait..." } %>
 <% end %>
