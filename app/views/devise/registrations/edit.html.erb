@@ -4,6 +4,10 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="field">
     <%= f.text_field :first_name, autofocus: true %>
   </div>
 

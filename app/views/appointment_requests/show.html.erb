@@ -74,8 +74,20 @@
 
 <hr>
 <% @comments.each do |comment| %>
-  <p><%= comment.text %><span class="pull-right"><small><%= fullname(User.find(comment.user_id)) %></small></span></p>
-  <p><span class="pull-right"><small><%= comment.created_at.strftime('%m/%d %T') %></small></span></p>
+  <% user = User.find(comment.user_id) %>
+  <div class="row">
+    <div class="col-xs-3">
+      <span class="pull-left"><small><%= image_tag user.photo.thumb.url, class: 'img_circle_sm' %><%= fullname(user) %></small></span>
+      <br>
+      <br class="clearfix">
+      
+    </div>
+    <div class="col-xs-9">
+      <p><%= comment.text %></p>
+    </div>
+    <p><span class="pull-right"><small>at <%= comment.created_at.strftime('%m/%d %T') %></small></span></p>
+  </div>
+  
   <br class="clearfix">
   <hr>
 <% end %>
