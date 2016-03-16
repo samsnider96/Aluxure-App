@@ -34,7 +34,7 @@
 
 <h1>My Appointments</h1>
 <hr>
-<h3><%= "You have no appointments at this time." if @appointment_requests.nil? %></h3>
+<h3><%= "You have no appointments at this time. Click <a href='/item_selections/new'>here</a> to make a new appointment request.".html_safe if @appointment_requests.empty? %></h3>
 <div class="row">
   <% @appointment_requests.each do |appointment_request| %>
   <div class="col-xs-12 col-md-4">
