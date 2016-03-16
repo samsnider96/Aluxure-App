@@ -4,6 +4,18 @@
 </div>
     <div class="image_text_wrapper">
       <div class="image_text">
+
+        <!-- flash messages -->
+        <% flash.each do |message_type, message| %>
+          <% if message_type == "notice" %>
+            <p class="alert alert-info"><%= notice %></p>
+          <% elsif message_type == "alert" %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% else %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+        <% end %>
+
         <h1>YOUR STORE, CONNECTED.</h1>
         <h4>Control Your Supply and Demand</h4>
 
