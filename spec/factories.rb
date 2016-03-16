@@ -12,6 +12,7 @@ FactoryGirl.define do
   end
 
   factory :company do
+    id 1
     sequence(:name, 100) { |n| "company_#{n}" }
     description "Lorem ipsum"
     line_1 "line_1"

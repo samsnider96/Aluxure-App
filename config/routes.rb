@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :appointment_requests do
     resources :comments, only: [:new, :create, :destroy]
   end
+
+  resources :companies
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

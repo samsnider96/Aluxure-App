@@ -14,6 +14,24 @@ def valid_attributes
 end
 
 RSpec.describe ItemsController, type: :controller do
+  describe "GET #show" do
+    it "should result in 200 OK" do
+      sign_in FactoryGirl.create(:user)
+      item = FactoryGirl.create(:item)
+      get :show, id: item.id
+      response.should render_template :show
+    end
+  end 
+
+  describe "GET #new" do
+    it "should result in 200 OK" do
+      sign_in FactoryGirl.create(:user)
+      company = FactoryGirl.create(:item)
+      get :new
+      response.should render_template :new
+    end
+  end
+
   describe "POST #create" do
     it "should redirect to new item page if invalid entry" do
       post :create, {user_id: 1, brand: ""}

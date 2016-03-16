@@ -45,12 +45,6 @@ class ItemsController < ApplicationController
 
   private
 
-  def is_owner?
-    return if Item.find(params[:id]).user_id == current_user.id
-    flash[:danger] = "Unauthorized"
-    redirect_to items_path
-  end
-
   def item_params
     params.require(:item).permit(:user_id, :brand, :type, :color, :size, :material, :condition, :description)
   end

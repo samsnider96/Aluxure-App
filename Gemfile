@@ -40,6 +40,7 @@ gem 'bootstrap_form'
 
 # easier forms
 gem 'simple_form'
+gem 'country_select'
 
 # image uploading
 gem 'carrierwave'
