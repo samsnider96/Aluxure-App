@@ -28,6 +28,6 @@
   <li><strong>Description:</strong> <%= @item.description %></li>
   </ul>
 
-  <span class="pull-right"><%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(@item) if @item(user_id: current_user.id) %></span>
+  <span class="pull-right"><%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(@item) if @item.user_id == current_user.id %></span>
   <br class="clearfix">
 </div>
