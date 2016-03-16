@@ -13,7 +13,9 @@
 <%= simple_form_for @product_image do |f| %>
   <%= f.file_field :photo %><br>
   <%= f.input :item_id, as: :hidden, :input_html => { :value => params[:item_id] } %>
-  <%= f.submit 'Add Photo', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Uploading..." }  %>
+  <%= button_tag(type: 'submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Uploading..." }) do %>
+    <i class="fa fa-plus-circle"></i> Add New Photo
+  <% end %>
 <% end %>
 
 <br>
