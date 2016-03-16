@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_owner?, only: [:edit, :update]
+  before_action :is_owner?, only: [:edit, :update, :destroy]
 
   def index
     @items = current_user.items.order(updated_at: :desc)
@@ -34,6 +34,13 @@ class ItemsController < ApplicationController
     return redirect_to items_path if @item.save
     flash[:danger] = "Woops, looks like something went wrong. Please try again."
     render :edit
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    flash[:danger] = "Item deleted"
+    redirect_to items_path
   end
 
   private

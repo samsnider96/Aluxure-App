@@ -33,6 +33,7 @@ FactoryGirl.define do
   end
 
   factory :item do
+    id 1
     user_id 1
     brand "brand"
     category "Shirt"

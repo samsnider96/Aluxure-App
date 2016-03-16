@@ -47,4 +47,36 @@ RSpec.describe ItemsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+
+    it "should let user who owns the item delete the item" do
+      user = FactoryGirl.create(:user)
+      item = FactoryGirl.create(:item)
+      sign_in user
+      expect{
+        delete :destroy, id: item.id
+      }.to change(Item, :count).by(-1)
+    end
+
+    it "shouldn't let user who doesn't own the item delete the item" do
+      user = FactoryGirl.create(:user, id: 2)
+      item = FactoryGirl.create(:item)
+      sign_in user
+      expect{
+        delete :destroy, id: item.id
+      }.to_not change(Item, :count)
+    end
+
+    it "should delete the item photos after the item has been deleted" do
+      user = FactoryGirl.create(:user)
+      item = FactoryGirl.create(:item)
+      product_image = FactoryGirl.create(:product_image)
+      sign_in user
+      expect{
+        delete :destroy, id: item.id
+      }.to change(ProductImage, :count).by(-1)
+    end
+
+  end
+
 end
