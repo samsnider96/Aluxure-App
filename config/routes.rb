@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   end
 
   resources :companies
+  resources :appointment_approvals, only: [:create]
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

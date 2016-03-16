@@ -1,6 +1,9 @@
 class AppointmentRequestsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @appointment_requests = current_user.appointment_requests.order(updated_at: :desc)
+    @incoming_requests = AppointmentRequest.where(company_id: current_user.company_id)
   end
 
   def show

@@ -13,12 +13,25 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.create(company_params)
     if @company.save
+      current_user.update(company_id: @company.id)
       flash[:success] = "New company created"
       redirect_to company_path(@company)
     else
       flash[:error] = "Oops! It looks like there was an error."
       redirect_to new_company_path
     end
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    @company.update(company_params)
+    return redirect_to company_path(@company) if @company.save
+    flash[:danger] = "Woops, looks like something went wrong. Please try again."
+    render :edit
   end
 
   def destroy
@@ -33,11 +46,11 @@ class CompaniesController < ApplicationController
   def is_owner?
     return if Company.find(params[:id]).id == current_user.company_id
     flash[:danger] = "Unauthorized"
-    redirect_to items_path
+    redirect_to root_path
   end
 
   def company_params
     params.require(:company).permit(:name, :description, :line_1, :line_2, :line_3, :city, :county_province, :zip_or_postcode, 
-      :country, :other_address_details, :phone, :email)
+      :country, :other_address_details, :phone, :email, :photo)
   end
 end
