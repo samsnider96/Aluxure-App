@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   end
 
   resources :companies
-  resources :appointment_approvals, only: [:create]
+  resources :appointment_approvals, only: :create
+  resources :appointment_declinals, only: :create
 
   get 'privacy_policy' => 'static_pages#privacy_policy'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'

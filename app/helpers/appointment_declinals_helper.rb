@@ -1,0 +1,2 @@
+module AppointmentDeclinalsHelper
+end

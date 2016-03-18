@@ -1,4 +1,6 @@
 <h1>My Items</h1>
+<%= link_to ('<i class="fa fa-plus-circle"></i> Add New Item').html_safe, new_item_path %>
+<hr>
 <div class="row">
 
   <% @items.each do |item| %>

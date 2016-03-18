@@ -20,6 +20,7 @@
         </ul>
         <%= link_to 'Details', appointment_request_path(incoming_request), class: 'btn btn-danger btn-block' %>
         <%= link_to 'Accept', appointment_approvals_path(appointment_request_id: incoming_request.id), method: :post, class: 'btn btn-success btn-block' unless incoming_request.approved %>
+        <%= link_to 'Decline', appointment_declinals_path(appointment_request_id: incoming_request.id), method: :post, class: 'btn btn-warning btn-block' unless incoming_request.approved || incoming_request.declined %>
         <%= "<button class='btn btn-success btn-block'><i class='fa fa-check-circle'></i> Approved!</button>".html_safe if incoming_request.approved %>
 
       </div>
