@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316231403) do
+ActiveRecord::Schema.define(version: 20160318065414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20160316231403) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "image_uploads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "image_uploads", ["user_id"], name: "index_image_uploads_on_user_id", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "brand"
@@ -69,16 +77,22 @@ ActiveRecord::Schema.define(version: 20160316231403) do
     t.string   "material"
     t.string   "condition"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_upload_id"
   end
+
+  add_index "items", ["image_upload_id"], name: "index_items_on_image_upload_id", using: :btree
 
   create_table "product_images", force: :cascade do |t|
     t.integer  "item_id"
     t.string   "photo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "image_upload_id"
   end
+
+  add_index "product_images", ["image_upload_id"], name: "index_product_images_on_image_upload_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

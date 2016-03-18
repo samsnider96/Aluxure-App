@@ -8,17 +8,19 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @images = ProductImage.where(item_id: @item.id)
+    @images = ImageUpload.find(@item.image_upload_id).product_images
   end
 
   def new
     @item = Item.new
+    @images ||= ProductImage.where(image_upload_id: params[:image_upload_id])
   end
 
   def create
     @item = current_user.items.create(item_params)
     if @item.save
-      redirect_to new_product_image_path(item_id: @item.id)
+      ImageUpload.find(@item.image_upload_id).product_images.update_all(item_id: @item.id)
+      redirect_to items_path
     else
       render :new, :status => :unprocessable_entity
     end
@@ -46,6 +48,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :brand, :type, :color, :size, :material, :condition, :description, :category)
+    params.require(:item).permit(:user_id, :brand, :type, :color, :size, :material, :condition, :description, :category, :image_upload_id)
   end
 end

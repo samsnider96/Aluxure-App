@@ -1,6 +1,7 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
+
   factory :user do
     id 1
     first_name "John"
@@ -33,9 +34,14 @@ FactoryGirl.define do
     user_id 1
   end
 
+  factory :image_upload do
+    id 1
+  end
+
   factory :item do
     id 1
     user_id 1
+    image_upload_id 1
     brand "brand"
     category "Shirt"
     color "Color"

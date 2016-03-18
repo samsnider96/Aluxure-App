@@ -1,3 +1,14 @@
+<div class="row">
+  <h1>Item Photos</h1>
+  <% if @images %>
+    <% @images.each do |image| %>
+      <div class="col-xs-12 col-md-6">
+        <%= image_tag image.photo.thumb.url, class: 'square item_image', style: 'padding-bottom: 0px' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
 <h1>Enter Details</h1>
 
 <%= simple_form_for @item do |f| %>
@@ -8,5 +19,6 @@
   <%= f.input :material %>
   <%= f.input :condition %>
   <%= f.input :description %>
+  <%= f.input :image_upload_id, as: :hidden, input_html: { value: params[:image_upload_id] } %>
   <%= f.submit 'Submit', class: 'btn btn-success', data: { disable_with: 'Please wait...' } %>
 <% end %>

@@ -10,13 +10,12 @@
 <% end %>
 </div>
 
-<%= simple_form_for @product_image do |f| %>
+<%= simple_form_for @product_image, url: product_images_path(image_upload_id: params[:image_upload_id]), method: :post do |f| %>
   <%= f.file_field :photo %><br>
-  <%= f.input :item_id, as: :hidden, :input_html => { :value => params[:item_id] } %>
   <%= button_tag(type: 'submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Uploading..." }) do %>
     <i class="fa fa-plus-circle"></i> Add New Photo
   <% end %>
 <% end %>
 
 <br>
-<%= link_to 'Done', items_path, class: 'btn btn-primary btn-lg btn-block' %>
+<%= link_to 'Next', new_item_path(image_upload_id: params[:image_upload_id]), class: 'btn btn-primary btn-lg btn-block' %>

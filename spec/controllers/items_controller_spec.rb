@@ -18,6 +18,7 @@ RSpec.describe ItemsController, type: :controller do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
       item = FactoryGirl.create(:item)
+      FactoryGirl.create(:image_upload)
       get :show, id: item.id
       response.should render_template :show
     end
@@ -39,9 +40,16 @@ RSpec.describe ItemsController, type: :controller do
     end
 
     it "should increase item count if new item is created" do
-      sign_in FactoryGirl.create(:user)
-      post :create, { item: FactoryGirl.attributes_for(:item) }
+      user = FactoryGirl.create(:user)
+      image_upload = user.image_uploads.create
+      product_image = FactoryGirl.create(:product_image, image_upload_id: image_upload.id, item_id: nil)
+      product_image_2 = FactoryGirl.create(:product_image, id: 2, image_upload_id: image_upload.id, item_id: nil)
+      sign_in user
+      expect(product_image.item_id).to be_nil
+      post :create, { item: FactoryGirl.attributes_for(:item), image_upload_id: image_upload.id }
       expect(Item.count).to eq(1)
+      expect(product_image.reload.item_id).to_not be_nil
+      expect(product_image_2.reload.item_id).to_not be_nil
     end
   end
 

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :appointment_requests
   has_many :comments
+  has_many :image_uploads
   has_one :company
 
   validates :first_name, :last_name, :phone, presence: true
