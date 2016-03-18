@@ -1,6 +1,27 @@
-// Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// navbar stuff
+.navbar-inverse {
+  background-color: white !important; 
+}
+
+.logo {
+  height: 40px;
+  display: table;
+}
+
+.navbar {
+  border-bottom: 1px solid #2090AC !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: gray !important;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #2090AC;
+}
+// end of navbar stuff
+
+
 
 @mixin blur {
   -webkit-filter: blur(3px);
@@ -44,4 +65,8 @@
 .image_text {
   display: table-cell;
   vertical-align: middle;
+}
+
+.footer_logo {
+  height: 60px;
 }

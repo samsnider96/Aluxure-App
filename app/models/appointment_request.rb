@@ -11,7 +11,6 @@ class AppointmentRequest < ActiveRecord::Base
   private
 
   def start_must_be_before_end_time
-      errors.add(:start_time, "must be before end time") unless
-          start_time.to_i < end_time.to_i
+      errors.add(:start_time, "must be before end time") unless start_time < end_time
   end 
 end
