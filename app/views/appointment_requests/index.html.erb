@@ -44,14 +44,14 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3><%= Company.find(appointment_request.company_id).name %>
-          <span class="pull-right"><%= appointment_request.approved ? '<i class="fa fa-check-circle" style="color:#05CE05;"></i>'.html_safe : '<i class="fa fa-hourglass-half"></i>'.html_safe %></span>
+          <span class="pull-right"><%= status_icon(appointment_request) %></span>
           </h3>
       </div>
       <div class="panel-body">
         <ul style="list-style-type:none;padding-left:0px;">
           <li><strong>Start Time:</strong> <%= display_datetime(appointment_request.start_time) %></li>
           <li><strong>End Time:</strong> <%= display_datetime(appointment_request.end_time) %></li>
-          <li><strong>Status:</strong> <%= appointment_request.approved ? "Approved" : "Waiting" %></li>
+          <li><strong>Status:</strong> <%= status(appointment_request) %></li>
         </ul>
         <%= link_to 'Details', appointment_request_path(appointment_request), class: 'btn btn-danger btn-block' %>
       </div>
