@@ -1,8 +1,18 @@
 <h1>Appointment for <%= @company.name %></h1>
-<p><%= @company.description %></p>
+<hr>
 
 <div class="row">
   <div class="col-xs-12 col-md-4">
+    <div class="well">
+      <h3>Appointment Details</h3>
+      <ul style="list-style-type:none;padding-left:0px;">
+        <li><strong>Start Time:</strong> <%= display_datetime(@appointment_request.start_time) %></li>
+        <li><strong>End Time:</strong> <%= display_datetime(@appointment_request.end_time) %></li>
+        <li><strong>Status:</strong> <%= status(@appointment_request) %></li>
+      </ul>
+    </div>
+    <!-- well -->
+
     <div class="well">
       <h3>Address Details</h3>
       <address>
@@ -22,7 +32,7 @@
     <!-- well -->
   </div>
   <!-- col-md-4 -->
-  
+
   <div class="col-xs-12 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -61,6 +71,7 @@
       <!-- panel-default -->
   </div>
   <!-- col-md-8 -->
+
 </div>
 <!-- row -->
 

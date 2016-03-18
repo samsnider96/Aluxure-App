@@ -9,17 +9,17 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3><%= Company.find(incoming_request.company_id).name %>
-          <span class="pull-right"><%= incoming_request.approved ? '<i class="fa fa-check-circle" style="color:#05CE05;"></i>1'.html_safe : '<i class="fa fa-hourglass-half"></i>'.html_safe %></span>
+          <span class="pull-right"><%= status_icon(incoming_request) %></span>
           </h3>
       </div>
       <div class="panel-body">
         <ul style="list-style-type:none;padding-left:0px;">
-          <li><strong>Start Time:</strong> <%= incoming_request.start_time %></li>
-          <li><strong>End Time:</strong> <%= incoming_request.end_time %></li>
-          <li><strong>Status:</strong> <%= incoming_request.approved ? "Approved" : "Waiting" %></li>
+          <li><strong>Start Time:</strong> <%= display_datetime(incoming_request.start_time) %></li>
+          <li><strong>End Time:</strong> <%= display_datetime(incoming_request.end_time) %></li>
+          <li><strong>Status:</strong> <%= status(incoming_request) %></li>
         </ul>
         <%= link_to 'Details', appointment_request_path(incoming_request), class: 'btn btn-danger btn-block' %>
-        <%= link_to 'Accept', appointment_approvals_path(appointment_request_id: incoming_request.id), method: :post, class: 'btn btn-success btn-block' unless incoming_request.approved %>
+        <%= link_to 'Accept', appointment_approvals_path(appointment_request_id: incoming_request.id), method: :post, class: 'btn btn-success btn-block' unless incoming_request.approved || incoming_request.declined %>
         <%= link_to 'Decline', appointment_declinals_path(appointment_request_id: incoming_request.id), method: :post, class: 'btn btn-warning btn-block' unless incoming_request.approved || incoming_request.declined %>
         <%= "<button class='btn btn-success btn-block'><i class='fa fa-check-circle'></i> Approved!</button>".html_safe if incoming_request.approved %>
 
@@ -49,8 +49,8 @@
       </div>
       <div class="panel-body">
         <ul style="list-style-type:none;padding-left:0px;">
-          <li><strong>Start Time:</strong> <%= appointment_request.start_time %></li>
-          <li><strong>End Time:</strong> <%= appointment_request.end_time %></li>
+          <li><strong>Start Time:</strong> <%= display_datetime(appointment_request.start_time) %></li>
+          <li><strong>End Time:</strong> <%= display_datetime(appointment_request.end_time) %></li>
           <li><strong>Status:</strong> <%= appointment_request.approved ? "Approved" : "Waiting" %></li>
         </ul>
         <%= link_to 'Details', appointment_request_path(appointment_request), class: 'btn btn-danger btn-block' %>
