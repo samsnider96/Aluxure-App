@@ -189,7 +189,7 @@ blockquote p {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #fff;
+  color: gray;
   padding: 18px 15px;
   font-family: 'open_sansregular';
   -webkit-transition: all 0.4s ease-in-out;
@@ -198,7 +198,7 @@ blockquote p {
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #16A085;
 }
 
