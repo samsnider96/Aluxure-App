@@ -52,8 +52,8 @@ gem "figaro"
 gem 'fog', '~> 1.37'
 
 # datepicker
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+# gem 'momentjs-rails', '>= 2.9.0'
+# gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

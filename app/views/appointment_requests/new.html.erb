@@ -25,8 +25,8 @@
 <% end %>
 
 <%= simple_form_for AppointmentRequest.new, url: appointment_requests_path(items: @items), method: :post do |f| %>
-  <%= f.input :start_time, as: :datetime_picker %>
-  <%= f.input :end_time, as: :datetime_picker %>
+  <%= f.input :start_time, ampm: true %>
+  <%= f.input :end_time, ampm: true %>
   <%= f.input :company_id, as: :hidden, input_html: { value: @company.id } %>
   <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Please wait..." } %>
