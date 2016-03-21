@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
   before_action :is_owner?, only: [:edit, :update, :destroy]
+  before_action :has_paid?, only: :create
 
   def show
     @company = Company.find(params[:id])
@@ -42,6 +43,12 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+  def has_paid?
+    return if current_user.paid
+    flash[:danger] = "You must subscribe before registering a company"
+    redirect_to new_charge_path
+  end
 
   def is_owner?
     return if Company.find(params[:id]).id == current_user.company_id

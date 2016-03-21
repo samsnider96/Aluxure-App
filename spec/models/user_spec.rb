@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe User, :type => :model do
-  it "shouldn't accept users without all required fields" do
-    user = User.create(email: "example@example.com", password: "password", password_confirmation: "password").should_not be_valid
-  end
+
+  it { should validate_presence_of :first_name}
+  it { should validate_presence_of :last_name}
+  it { should validate_presence_of :phone}
 
   it "should accept users with all required fields" do
     user = User.create!(email: "example@example.com", password: "password", password_confirmation: "password", phone: "201-652-1441", first_name: "John", last_name: "Doe")
@@ -11,6 +12,6 @@ RSpec.describe User, :type => :model do
   end
 
   it "should not accept invalid phone numbers" do
-    user = FactoryGirl.build(:user, phone: "2abs32r").should_not be_valid
+    expect(FactoryGirl.build(:user, phone: "2abs32r")).to_not be_valid
   end
 end

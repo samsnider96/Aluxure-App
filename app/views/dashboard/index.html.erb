@@ -1,8 +1,8 @@
 <% unless current_user.company_id %>
 <div class="row">
   <div class="col-xs-12 col-md-4">
-    <h1>Own a company? <%= link_to 'Register today.', new_charge_path %></h1>
-    
+    <h1>Own a company? <%= link_to 'Register today.', new_charge_path unless current_user.paid %></h1>
+    <h1>You're all set to <%= link_to 'set up a company.', new_company_path if current_user.paid %></h1>
   </div>
 </div>
 <!-- row -->

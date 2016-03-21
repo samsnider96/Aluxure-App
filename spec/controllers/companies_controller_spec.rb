@@ -6,7 +6,7 @@ RSpec.describe CompaniesController, type: :controller do
       sign_in FactoryGirl.create(:user)
       company = FactoryGirl.create(:company)
       get :show, id: company.id
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end 
 
@@ -15,7 +15,7 @@ RSpec.describe CompaniesController, type: :controller do
       sign_in FactoryGirl.create(:user)
       company = FactoryGirl.create(:company)
       get :new
-      response.should render_template :new
+      expect(response).to render_template :new
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe CompaniesController, type: :controller do
     end
 
     it "should create a new company on a valid submission" do
-      user = FactoryGirl.create(:user)
+      user = FactoryGirl.create(:user, paid: true)
       sign_in user
       expect{
         post :create, company: FactoryGirl.attributes_for(:company)
@@ -36,11 +36,26 @@ RSpec.describe CompaniesController, type: :controller do
     end
 
     it "shouldn't create a new company on a valid submission" do
-      user = FactoryGirl.create(:user)
+      user = FactoryGirl.create(:user, paid: true)
       sign_in user
       expect{
         post :create, company: FactoryGirl.attributes_for(:company, email: "")
       }.to_not change(Company, :count)
+    end
+
+    it "shouldn't create create a new company if a user hasn't paid" do
+      user = FactoryGirl.create(:user)
+      sign_in user
+      expect {
+        post :create, company: FactoryGirl.attributes_for(:company)
+      }.to_not change(Company, :count)
+    end
+
+    it "should redirect a user if they haven't paid" do
+      user = FactoryGirl.create(:user)
+      sign_in user
+      post :create, company: FactoryGirl.attributes_for(:company)
+      expect(response).to redirect_to(new_charge_path)
     end
   end
 

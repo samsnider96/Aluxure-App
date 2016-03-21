@@ -5,7 +5,7 @@ RSpec.describe ItemSelectionsController, type: :controller do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
       get :new
-      response.should render_template :new
+      expect(response).to render_template :new
     end
   end
 end

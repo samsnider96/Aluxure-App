@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Comment, :type => :model do
   it "shouldn't accept comment without text and appointment_request_id" do
-    FactoryGirl.build(:comment, text: "").should_not be_valid
+    expect(FactoryGirl.build(:comment, text: "")).to_not be_valid
   end
 
   it "should accept comment with all required fields" do

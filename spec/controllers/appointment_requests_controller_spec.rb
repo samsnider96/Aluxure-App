@@ -5,7 +5,7 @@ RSpec.describe AppointmentRequestsController, type: :controller do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
       get :index
-      response.should render_template :index
+      expect(response).to render_template :index
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe AppointmentRequestsController, type: :controller do
       sign_in FactoryGirl.create(:user)
       appointment_request = FactoryGirl.create(:appointment_request)
       get :show, id: appointment_request.id, company_id: company.id
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end 
 
@@ -25,7 +25,7 @@ RSpec.describe AppointmentRequestsController, type: :controller do
       item = FactoryGirl.create(:item)
       sign_in FactoryGirl.create(:user)
       get :new, company_id: company.id, item_ids: ["1"]
-      response.should render_template :new
+      expect(response).to render_template :new
     end
   end
 end

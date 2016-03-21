@@ -71,6 +71,8 @@ group :development, :test do
   gem 'byebug'
   # Use rspec for testing
   gem 'rspec-rails', '~> 3.0'
+  gem 'minitest'
+  gem 'test-unit'
 end
 
 group :test do
