@@ -1,0 +1,50 @@
+<div class="row">
+
+  <div class="col-xs-12">
+
+    <h1>Payment Plan</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <h3>Please pay to continue:</h3>
+
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <span>Amount: $20.00</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="A month's subscription"
+              data-amount="2000"
+              data-locale="auto"></script>
+    <% end %>
+    <br>
+    <p>
+      *Test Card: 4242 4242 4242 4242, CVC must be 3 digits.
+    </p>
+
+  </div>
+  <!-- col-xs-12 -->
+</div>
+<!-- row -->

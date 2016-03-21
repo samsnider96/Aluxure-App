@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :appointment_approvals, only: :create
   resources :appointment_declinals, only: :create
 
+  resources :charges
+
   get 'privacy_policy' => 'static_pages#privacy_policy'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   
