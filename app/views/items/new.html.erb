@@ -18,6 +18,7 @@
   <%= f.input :size %>
   <%= f.input :material %>
   <%= f.input :condition %>
+  <%= f.input :alterations %>
   <%= f.input :description %>
   <%= f.input :image_upload_id, as: :hidden, input_html: { value: params[:image_upload_id] } %>
   <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: 'Please wait...' } %>
