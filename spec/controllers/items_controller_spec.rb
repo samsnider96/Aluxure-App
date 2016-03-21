@@ -14,13 +14,14 @@ def valid_attributes
 end
 
 RSpec.describe ItemsController, type: :controller do
+
   describe "GET #show" do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
       item = FactoryGirl.create(:item)
       FactoryGirl.create(:image_upload)
       get :show, id: item.id
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end 
 
@@ -28,8 +29,15 @@ RSpec.describe ItemsController, type: :controller do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
       company = FactoryGirl.create(:item)
+      image_upload = FactoryGirl.create(:image_upload)
+      get :new, image_upload_id: image_upload.id
+      expect(response).to render_template :new
+    end
+
+    it "should redirect to add photos page if image_upload_id is nil" do
+      sign_in FactoryGirl.create(:user)
       get :new
-      response.should render_template :new
+      expect(response).to redirect_to(new_product_image_path)
     end
   end
 

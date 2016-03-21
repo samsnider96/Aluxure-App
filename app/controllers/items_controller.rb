@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    redirect_to new_product_image_path unless params[:image_upload_id]
     @item = Item.new
     @images ||= ProductImage.where(image_upload_id: params[:image_upload_id])
   end
