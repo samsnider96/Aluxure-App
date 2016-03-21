@@ -11,10 +11,10 @@
 </div>
 
 <%= simple_form_for @product_image, url: product_images_path(image_upload_id: params[:image_upload_id]), method: :post do |f| %>
-  <%= f.file_field :photo %><br>
-  <%= button_tag(type: 'submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Uploading..." }) do %>
+  <label class = 'btn btn-success btn-lg btn-block'>
+    <%= f.file_field :photo, style: 'display:none;', onchange: "$('#new_product_image').submit();" %>
     <i class="fa fa-plus-circle"></i> Add New Photo
-  <% end %>
+  </label>
 <% end %>
 
 <br>
