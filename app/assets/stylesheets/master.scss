@@ -14,7 +14,7 @@
   @include img_circle;
 }
 
-.panel-body {
+.panel-body-dashboard {
   height: 170px;
 }
 
@@ -51,7 +51,7 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .panel-body {
+  .panel-body-dashboard {
     height: auto;
   }
 }
