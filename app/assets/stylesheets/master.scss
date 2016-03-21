@@ -14,6 +14,9 @@
   @include img_circle;
 }
 
+.panel-body {
+  height: 170px;
+}
 
 .embed-responsive {
   position: relative;
@@ -45,4 +48,10 @@
 // Modifier class for 4:3 aspect ratio
 .embed-responsive-4by3 {
   padding-bottom: 75%;
+}
+
+@media only screen and (max-width: 992px) {
+  .panel-body {
+    height: auto;
+  }
 }
