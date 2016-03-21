@@ -1,3 +1,12 @@
+<% unless current_user.company_id %>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <h1>Own a company? <%= link_to 'Register today.', new_company_path %></h1>
+    
+  </div>
+</div>
+<!-- row -->
+
 <div class="row">
   <div class="col-xs-12 col-md-6">
 
@@ -89,6 +98,8 @@
 
 </div>
 <!-- row -->
+<% end %>
+<!-- % unless current_user.company_id % -->
 
 <div class="row">
   <div class="col-xs-12 col-md-6">
