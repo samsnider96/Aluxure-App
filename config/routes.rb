@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :items
   resources :product_images
 
+  resources :image_uploads, only: :destroy
+
   resources :item_selections, only: [:new, :create]
   resources :company_selections, only: [:new, :create]
 

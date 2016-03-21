@@ -2,7 +2,7 @@
   <h1>Item Photos</h1>
   <% if @images %>
     <% @images.each do |image| %>
-      <div class="col-xs-12 col-md-6">
+      <div class="col-xs-12 col-md-3">
         <%= image_tag image.photo.thumb.url, class: 'square item_image', style: 'padding-bottom: 0px' %>
       </div>
     <% end %>
@@ -20,5 +20,10 @@
   <%= f.input :condition %>
   <%= f.input :description %>
   <%= f.input :image_upload_id, as: :hidden, input_html: { value: params[:image_upload_id] } %>
-  <%= f.submit 'Submit', class: 'btn btn-success', data: { disable_with: 'Please wait...' } %>
+  <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: 'Please wait...' } %>
 <% end %>
+
+<br>
+
+<%= link_to 'Cancel', dashboard_path, class: 'btn btn-danger btn-lg btn-block' unless params[:image_upload_id] %>
+<%= link_to 'Cancel', image_upload_path(params[:image_upload_id]), method: :delete, class: 'btn btn-danger btn-lg btn-block', data: {confirm: "Are you sure?"} if params[:image_upload_id] %>

@@ -37,4 +37,23 @@ RSpec.describe ProductImagesController, type: :controller do
       }.to change(ImageUpload, :count).by(1)
     end
   end
+
+  describe "DELETE #destroy" do
+    it "should redirect user to dashboard" do
+      user = FactoryGirl.create(:user)
+      sign_in user
+      image_upload = ImageUpload.create(user_id: user)
+      product_image = FactoryGirl.create(:product_image)
+      post :destroy, id: product_image.id
+      expect(response).to redirect_to(dashboard_path)
+    end
+
+    it "should delete the product image" do
+      user = FactoryGirl.create(:user)
+      sign_in user
+      image_upload = ImageUpload.create(user_id: user)
+      product_image = FactoryGirl.create(:product_image)
+      expect{post :destroy, id: product_image.id}.to change(ProductImage, :count).by(-1)
+    end
+  end
 end

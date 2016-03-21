@@ -3,7 +3,7 @@
 <div class="row">
 <% if @images %>
   <% @images.each do |image| %>
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-3">
       <%= image_tag image.photo.thumb.url, class: 'square item_image' %>
     </div>
   <% end %>
@@ -19,3 +19,6 @@
 
 <br>
 <%= link_to 'Next', new_item_path(image_upload_id: params[:image_upload_id]), class: 'btn btn-primary btn-lg btn-block' %>
+
+<%= link_to 'Cancel', dashboard_path, class: 'btn btn-danger btn-lg btn-block' unless params[:image_upload_id] %>
+<%= link_to 'Cancel', image_upload_path(params[:image_upload_id]), method: :delete, class: 'btn btn-danger btn-lg btn-block', data: {confirm: "Are you sure?"} if params[:image_upload_id] %>
