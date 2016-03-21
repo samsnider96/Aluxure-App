@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318065414) do
+ActiveRecord::Schema.define(version: 20160321053040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20160318065414) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "appointment_items", ["appointment_request_id"], name: "index_appointment_items_on_appointment_request_id", using: :btree
+  add_index "appointment_items", ["item_id"], name: "index_appointment_items_on_item_id", using: :btree
 
   create_table "appointment_requests", force: :cascade do |t|
     t.integer  "company_id"
@@ -34,6 +37,10 @@ ActiveRecord::Schema.define(version: 20160318065414) do
     t.boolean  "declined",   default: false
   end
 
+  add_index "appointment_requests", ["company_id"], name: "index_appointment_requests_on_company_id", using: :btree
+  add_index "appointment_requests", ["updated_at"], name: "index_appointment_requests_on_updated_at", using: :btree
+  add_index "appointment_requests", ["user_id"], name: "index_appointment_requests_on_user_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "appointment_request_id"
     t.text     "text"
@@ -41,6 +48,10 @@ ActiveRecord::Schema.define(version: 20160318065414) do
     t.datetime "updated_at",             null: false
     t.integer  "user_id"
   end
+
+  add_index "comments", ["appointment_request_id"], name: "index_comments_on_appointment_request_id", using: :btree
+  add_index "comments", ["updated_at"], name: "index_comments_on_updated_at", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "photo"
@@ -59,6 +70,8 @@ ActiveRecord::Schema.define(version: 20160318065414) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
 
   create_table "image_uploads", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -83,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160318065414) do
   end
 
   add_index "items", ["image_upload_id"], name: "index_items_on_image_upload_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "product_images", force: :cascade do |t|
     t.integer  "item_id"
@@ -93,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160318065414) do
   end
 
   add_index "product_images", ["image_upload_id"], name: "index_product_images_on_image_upload_id", using: :btree
+  add_index "product_images", ["item_id"], name: "index_product_images_on_item_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -114,7 +129,9 @@ ActiveRecord::Schema.define(version: 20160318065414) do
     t.string   "photo"
   end
 
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["photo"], name: "index_users_on_photo", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
