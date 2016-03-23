@@ -3,13 +3,16 @@ cache: bundler
 rvm:
 - 2.2.0
 - 2.2.3
-before_script:
-- psql -c 'create database aluxure_test;' -U postgres
-- psql -c "create role aluxure login;" -U postgres
+env:
+  - DB=postgresql
 script:
-- bundle exec rspec
-- bundle exec rake db:schema:load
-- bundle exec rake
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+  - bundle exec rspec
+before_script:
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database aluxure_test;' -U postgres
 services:
 - postgresql
 deploy:
