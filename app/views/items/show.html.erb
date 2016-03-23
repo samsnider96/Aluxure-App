@@ -16,7 +16,13 @@
     <% end %>
   </div>
   <br>
-  <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, new_product_image_path(image_upload_id: @item.image_upload_id) if @item.user_id == current_user.id %>
+  <% if @item.user_id == current_user.id %>
+    <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, new_product_image_path(image_upload_id: @item.image_upload_id) %>
+    <span class="pull-right">
+      <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(@item) %>
+      <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(@item), method: :delete, data: { confirm: "Are you sure?" } %>
+    </span>
+  <% end %>
   <hr>
   <ul style="list-style-type:none;padding-left:0px">
   <li><strong>Brand:</strong> <%= @item.brand %></li>
@@ -28,6 +34,6 @@
   <li><strong>Description:</strong> <%= @item.description %></li>
   </ul>
 
-  <span class="pull-right"><%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(@item) if @item.user_id == current_user.id %></span>
+  
   <br class="clearfix">
 </div>
