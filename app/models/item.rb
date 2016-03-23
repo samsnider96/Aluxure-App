@@ -6,4 +6,8 @@ class Item < ActiveRecord::Base
   has_many :appointment_reqeusts, through: :appointment_items
 
   validates_presence_of :brand, :category, :color, :condition, :description, :image_upload_id
+
+  CONDITION = ["New", "Like New", "Very Good", "Good", "Fair"]
+
+
 end

@@ -17,7 +17,7 @@
   <%= f.input :color %>
   <%= f.input :size %>
   <%= f.input :material %>
-  <%= f.input :condition %>
+  <%= f.input :condition, collection: Item::CONDITION %>
   <%= f.input :alterations %>
   <%= f.input :description %>
   <%= f.input :image_upload_id, as: :hidden, input_html: { value: params[:image_upload_id] } %>

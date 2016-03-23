@@ -45,7 +45,7 @@ RSpec.describe ProductImagesController, type: :controller do
       image_upload = ImageUpload.create(user_id: user)
       product_image = FactoryGirl.create(:product_image)
       post :destroy, id: product_image.id
-      expect(response).to redirect_to(dashboard_path)
+      expect(response).to redirect_to(:back)
     end
 
     it "should delete the product image" do

@@ -1,0 +1,23 @@
+<h1>Add Photo</h1>
+
+<div class="row">
+<% if @images %>
+  <% @images.each do |image| %>
+    <div class="col-xs-12 col-md-3">
+      <span class="pull-right"><%= link_to 'Delete <i class="fa fa-trash-o" style="font-size: 20px"></i>'.html_safe, product_image_path(image), method: :delete, data: { confirm: "Are you sure?" } %></span>
+      <%= image_tag image.photo.thumb.url, class: 'square item_image' %>
+
+    </div>
+  <% end %>
+<% end %>
+</div>
+
+<%= simple_form_for @product_image, url: product_image_path(image_upload_id: params[:image_upload_id]), method: :patch do |f| %>
+  <label class = 'btn btn-success btn-lg btn-block'>
+    <%= f.file_field :photo, style: 'display:none;', onchange: "$('#new_product_image').submit();" %>
+    <i class="fa fa-plus-circle"></i> Add New Photo
+  </label>
+<% end %>
+
+<br>
+<%= link_to 'Cancel', item_path(@item), class: 'btn btn-danger btn-lg btn-block' %>

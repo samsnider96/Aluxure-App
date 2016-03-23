@@ -6,7 +6,8 @@
   <%= f.input :color %>
   <%= f.input :size %>
   <%= f.input :material %>
-  <%= f.input :condition %>
+  <%= f.input :condition, collection: Item::CONDITION %>
+  <%= f.input :alterations, placeholder: 'Leave blank if no alterations.' %>
   <%= f.input :description %>
   <%= f.submit 'Submit', class: 'btn btn-success' %>
 <% end %>
