@@ -39,7 +39,7 @@ class ProductImagesController < ApplicationController
   def destroy
     @product_image = ProductImage.find(params[:id])
     @product_image.destroy
-    redirect_to :back
+    request.env["HTTP_REFERER"] ? redirect_to(:back) : redirect_to(dashboard_path)
   end 
 
   private
