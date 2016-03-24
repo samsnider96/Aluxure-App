@@ -1,6 +1,15 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
+  factory :gender do
+    
+  end
+  factory :size do
+    
+  end
+  factory :item_attribute do
+    
+  end
 
   factory :user do
     id 1

@@ -1,0 +1,3 @@
+class Category < ItemAttribute
+
+end

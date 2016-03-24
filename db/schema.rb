@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321162011) do
+ActiveRecord::Schema.define(version: 20160324021202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(version: 20160321162011) do
 
   add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
 
+  create_table "genders", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "image_uploads", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,23 +87,42 @@ ActiveRecord::Schema.define(version: 20160321162011) do
 
   add_index "image_uploads", ["user_id"], name: "index_image_uploads_on_user_id", using: :btree
 
+  create_table "item_attributes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "gender"
+    t.string   "category"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "brand"
-    t.string   "category"
     t.string   "color"
-    t.string   "size"
-    t.string   "material"
     t.string   "condition"
     t.text     "description"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "image_upload_id"
     t.text     "alterations"
+    t.string   "type"
+    t.integer  "brand_id"
+    t.integer  "category_id"
+    t.integer  "size_id"
+    t.integer  "material_id"
   end
 
+  add_index "items", ["brand_id"], name: "index_items_on_brand_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["image_upload_id"], name: "index_items_on_image_upload_id", using: :btree
+  add_index "items", ["material_id"], name: "index_items_on_material_id", using: :btree
+  add_index "items", ["size_id"], name: "index_items_on_size_id", using: :btree
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
+
+  create_table "mens_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "product_images", force: :cascade do |t|
     t.integer  "item_id"
@@ -109,6 +134,16 @@ ActiveRecord::Schema.define(version: 20160321162011) do
 
   add_index "product_images", ["image_upload_id"], name: "index_product_images_on_image_upload_id", using: :btree
   add_index "product_images", ["item_id"], name: "index_product_images_on_item_id", using: :btree
+
+  create_table "read_marks", force: :cascade do |t|
+    t.integer  "readable_id"
+    t.string   "readable_type", null: false
+    t.integer  "reader_id"
+    t.string   "reader_type",   null: false
+    t.datetime "timestamp"
+  end
+
+  add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -135,5 +170,10 @@ ActiveRecord::Schema.define(version: 20160321162011) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["photo"], name: "index_users_on_photo", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "womens_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

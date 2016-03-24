@@ -14,7 +14,7 @@
 <%= simple_form_for @item do |f| %>
   <%= f.input :brand %>
   <%= f.input :category %>
-  <%= f.input :color %>
+  <%= f.input :color, collection: Item::COLORS %>
   <%= f.input :size %>
   <%= f.input :material %>
   <%= f.input :condition, collection: Item::CONDITION %>
