@@ -12,10 +12,11 @@
 <h1>Enter Details</h1>
 
 <%= simple_form_for @item do |f| %>
+  <%= f.input :gender, collection: Item::GENDERS %>
+  <%= f.input :category, collection: Item::MENS_CATEGORIES %>
   <%= f.input :brand %>
-  <%= f.input :category %>
-  <%= f.input :color %>
   <%= f.input :size %>
+  <%= f.input :color, collection: Item::COLORS %>
   <%= f.input :material %>
   <%= f.input :condition, collection: Item::CONDITION %>
   <%= f.input :alterations %>
@@ -28,3 +29,60 @@
 
 <%= link_to 'Cancel', dashboard_path, class: 'btn btn-danger btn-lg btn-block' unless params[:image_upload_id] %>
 <%= link_to 'Cancel', image_upload_path(params[:image_upload_id]), method: :delete, class: 'btn btn-danger btn-lg btn-block', data: {confirm: "Are you sure?"} if params[:image_upload_id] %>
+
+<script type="text/javascript">
+function makeList(array){
+  var list = "";
+  for (var i = 0; i < array.length; i++) {
+    list += '<option value="' + array[i] + '">' + array[i] + '</option>';
+  }
+  return list;
+}
+var womens_categories = makeList(<%= raw(Item::WOMENS_CATEGORIES) %>);
+var womens_bag_categories = makeList(<%= raw(Item::WOMENS_BAG_CATEGORIES) %>);
+var womens_shoes_categories = makeList(<%= raw(Item::WOMENS_SHOE_CATEGORIES) %>);
+var womens_sizes = makeList(<%= raw(Item::WOMENS_SIZES) %>);
+var womens_shoe_sizes = makeList(<%= raw(Item::WOMENS_SHOE_SIZES) %>);
+var womens_apparel_materials = makeList(<%= raw(Item::WOMENS_APPAREL_MATERIALS) %>);
+var womens_shoe_materials = makeList(<%= raw(Item::WOMENS_SHOE_MATERIALS) %>);
+var womens_apparel_brands = makeList(<%= raw(Item::WOMENS_APPAREL_BRANDS) %>);
+var womens_handbag_brands = makeList(<%= raw(Item::WOMENS_HANDBAG_BRANDS) %>);
+var womens_shoe_brands = makeList(<%= raw(Item::WOMENS_SHOE_BRANDS) %>);
+var mens_categories = makeList(<%= raw(Item::MENS_CATEGORIES) %>);
+var mens_shirt_sizes = makeList(<%= raw(Item::MENS_SHIRT_SIZES) %>);
+var mens_sleeve_length = makeList(<%= raw(Item::MENS_SLEEVE_LENGTH) %>);
+var mens_pants_sizes = makeList(<%= raw(Item::MENS_PANTS_SIZES) %>);
+var mens_inseam_length = makeList(<%= raw(Item::MENS_INSEAM_LENGTH) %>);
+var mens_jacket_sizes = makeList(<%= raw(Item::MENS_JACKET_SIZES) %>);
+var mens_suit_length = makeList(<%= raw(Item::MENS_SUIT_LENGTH) %>);
+var mens_apparel_brands = makeList(<%= raw(Item::MENS_APPAREL_BRANDS) %>);
+var mens_apparel_materials = makeList(<%= raw(Item::MENS_APPAREL_MATERIALS) %>);
+var mens_shoe_categories = makeList(<% raw(Item::MENS_SHOE_CATEGORIES) %>);
+var mens_shoe_brands = makeList(<%= raw(Item::MENS_SHOE_BRANDS) %>);
+var mens_shoe_materials = makeList(<%= raw(Item::MENS_SHOE_MATERIALS) %>);
+var mens_shoe_sizes = makeList(<%= raw(Item::MENS_SHOE_SIZES) %>);
+var mens_shoe_width = makeList(<%= raw(Item::MENS_SHOE_WIDTH) %>);
+
+$("#item_gender").on('change',function(){
+    var selected = $('#item_gender option:selected').text();
+    if(selected == "<%= Item::GENDERS[0] %>"){
+        $("#item_category").html(mens_categories_list);
+        $("#item_")
+    } else if(selected == "<%= Item::GENDERS[1] %>"){
+        $("#item_category").html(womens_categories_list);
+    }
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
