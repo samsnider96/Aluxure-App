@@ -35,9 +35,13 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    return redirect_to items_path if @item.save
-    flash[:danger] = "Woops, looks like something went wrong. Please try again."
-    render :edit
+    if @item.save
+      flash[:success] = "Item updated."
+      redirect_to items_path
+    else
+      flash[:danger] = "Woops, looks like something went wrong. Please try again."
+      render :edit
+    end
   end
 
   def destroy
