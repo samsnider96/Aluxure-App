@@ -33,12 +33,6 @@
 
 <script type="text/javascript">
 
-// $(function() {
-//   $( "#item_gender" ).autocomplete({
-//      source: ["Male", "Female"]
-//   });
-// });
-
 function makeList(array){
   var list = "";
   for (var i = 0; i < array.length; i++) {
@@ -113,6 +107,14 @@ $("#item_category").on('change', function(){
     } else if(selected == "Bags" && !isMens()) {
         $("#item_sub_category").html(womens_bag_categories);
         $("#item_brand").html(womens_handbag_brands);
+    } else if (selected == "Shirt" && isMens()){
+        $("#item_size").html(mens_shirt_sizes);
+    } else if(selected == "Pants" && isMens()) {
+        $("#item_size").html(mens_pants_sizes);
+    } else if((selected == "Outerwear" || selected == "Sport Coat") && isMens()) {
+        $("#item_size").html(mens_jacket_sizes);
+    } else if(selected == "Suits" && isMens()) {
+        $("#item_size").html(mens_suit_length);
     } else if(isMens()) {
         $("#item_brand").html(mens_apparel_brands);
         $("#item_material").html(mens_apparel_materials);
