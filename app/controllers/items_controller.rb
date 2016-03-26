@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @images ||= ProductImage.where(image_upload_id: @item.image_upload_id)
   end
 
   def update

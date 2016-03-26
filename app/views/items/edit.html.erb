@@ -1,13 +1,87 @@
+<div class="well">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Item Photos</h1>
+      <%= link_to '<i class="fa fa-plus-circle"></i> Add/Delete Photos'.html_safe, edit_product_image_path(image_upload_id: @item.image_upload_id) %>
+    </div>
+    
+    <hr class="clearfix">
+    <% if @images %>
+      <% @images.each do |image| %>
+        <div class="col-xs-12 col-md-3">
+          <%= image_tag image.photo.thumb.url, class: 'square item_image', style: 'padding-bottom: 0px' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <h1>Edit Details</h1>
 
 <%= simple_form_for @item, method: :put do |f| %>
-  <%= f.input :brand %>
-  <%= f.input :category %>
-  <%= f.input :color %>
-  <%= f.input :size %>
-  <%= f.input :material %>
+  <%= f.input :gender, collection: Item::GENDERS %>
+  <%= f.input :category, collection: Item::MENS_CATEGORIES %>
+  <%= f.input :sub_category, collection: ["N/A"] %>
+  <%= f.input :brand, collection: Item::MENS_APPAREL_BRANDS %>
+  <%= f.input :size, collection: Item::MENS_SHIRT_SIZES %>
+  <%= f.input :sleeve_length, collection: Item::MENS_SLEEVE_LENGTH %>
+  <%= f.input :inseam_length, collection: Item::MENS_INSEAM_LENGTH %>
+  <%= f.input :suit_length, collection: Item::MENS_SUIT_LENGTH %>
+  <%= f.input :shoe_width, collection: Item::MENS_SHOE_WIDTH %>
+  <%= f.input :color, collection: Item::COLORS %>
+  <%= f.input :material, collection: Item::MENS_APPAREL_MATERIALS %>
   <%= f.input :condition, collection: Item::CONDITION %>
-  <%= f.input :alterations, placeholder: 'Leave blank if no alterations.' %>
+  <%= f.input :alterations %>
   <%= f.input :description %>
-  <%= f.submit 'Submit', class: 'btn btn-success' %>
+  <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Submitting..." } %>
 <% end %>
+<br>
+<%= link_to 'Cancel', item_path(@item), class: 'btn btn-danger btn-lg btn-block' %>
+
+<%= render partial: 'items/form' %>
+
+<script type="text/javascript">
+prepopulate();
+
+function prepopulate(){
+  var pre_selected = $('#item_category option:selected').text();
+  if(pre_selected == "Shoes" && isMens()){
+      $("label[for=item_sub_category], #item_sub_category").show();
+      $("#item_sub_category").html(mens_shoe_categories);
+      $("#item_brand").html(mens_shoe_brands);
+      $("#item_material").html(mens_shoe_materials);
+      $("#item_size").html(mens_shoe_sizes);
+      $("label[for=item_shoe_width], #item_shoe_width").show();
+  } else if(pre_selected == "Shoes" && !isMens()){
+      $("label[for=item_sub_category], #item_sub_category").show();
+      $("#item_sub_category").html(womens_shoe_categories);
+      $("#item_brand").html(womens_shoe_brands);
+      $("#item_material").html(womens_shoe_materials);
+      $("#item_size").html(womens_shoe_sizes);
+  } else if(pre_selected == "Bags" && !isMens()) {
+      $("label[for=item_sub_category], #item_sub_category").show();
+      $("#item_sub_category").html(womens_bag_categories);
+      $("#item_brand").html(womens_handbag_brands);
+  } else if (pre_selected == "Shirts" && isMens()){
+      $("#item_size").html(mens_shirt_sizes);
+      $("label[for=item_sleeve_length], #item_sleeve_length").show();
+  } else if(pre_selected == "Pants" && isMens()) {
+      $("#item_size").html(mens_pants_sizes);
+      $("label[for=item_inseam_length], #item_inseam_length").show();
+  } else if((pre_selected == "Outerwear" || selected == "Sport Coat") && isMens()) {
+      $("#item_size").html(mens_jacket_sizes);
+  } else if(pre_selected == "Suits" && isMens()) {
+      $("#item_size").html(mens_suit_length);
+      $("label[for=item_suit_length], #item_suit_length").show();
+  } else if(isMens()) {
+      $("#item_brand").html(mens_apparel_brands);
+      $("#item_material").html(mens_apparel_materials);
+  } else {
+      $("#item_brand").html(womens_apparel_brands);
+      $("#item_material").html(womens_apparel_materials);
+      $("#item_size").html(womens_sizes);
+  }
+}
+
+
+</script>

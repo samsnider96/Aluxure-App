@@ -1,15 +1,17 @@
 <h1>Add Photo</h1>
 
-<div class="row">
-<% if @images %>
-  <% @images.each do |image| %>
-    <div class="col-xs-12 col-md-3">
-      <span class="pull-right"><%= link_to 'Delete this item <i class="fa fa-trash-o" style="font-size: 20px"></i>'.html_safe, product_image_path(image), method: :delete, data: { confirm: "Are you sure?" } %></span>
-      <%= image_tag image.photo.thumb.url, class: 'square item_image' %>
+<div class="well">
+  <div class="row">
+  <% if @images %>
+    <% @images.each do |image| %>
+      <div class="col-xs-12 col-md-3">
+        <span class="pull-right"><%= link_to 'Delete this item <i class="fa fa-trash-o" style="font-size: 20px"></i>'.html_safe, product_image_path(image), method: :delete, data: { confirm: "Are you sure?" } %></span>
+        <%= image_tag image.photo.thumb.url, class: 'square item_image' %>
 
-    </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>
 
 <div class="row">
