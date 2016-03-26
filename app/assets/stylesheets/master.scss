@@ -3,6 +3,11 @@
   padding-bottom: 100px;
 }
 
+.scrollable {
+  overflow-y: auto; 
+  max-height: 60vh
+}
+
 @mixin img_circle {
   border-radius: 50%;
 }

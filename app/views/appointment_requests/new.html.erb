@@ -25,7 +25,10 @@
 <% end %>
 
 <%= simple_form_for AppointmentRequest.new, url: appointment_requests_path(items: @items), method: :post do |f| %>
-  <%= f.input :start_time, ampm: true %>
+  <%= f.label :sched_date_field, "Scheduled Date" %>
+  <%= f.text_field :sched_date_field, :class => "datepicker" %>
+  <%= f.label :sched_time_field, "Scheduled Time" %>
+  <%= f.text_field :sched_time_field, :class => "timepicker" %>
   <%= f.input :end_time, ampm: true %>
   <%= f.input :company_id, as: :hidden, input_html: { value: @company.id } %>
   <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
