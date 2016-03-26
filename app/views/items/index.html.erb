@@ -1,13 +1,13 @@
 <h1>My Items</h1>
 <%= link_to ('<i class="fa fa-plus-circle"></i> Add New Item').html_safe, new_item_path %>
 <hr>
-<div class="row">
+
+<div class="list-group" style="cursor: pointer; cursor: hand;">
 
   <% @items.each do |item| %>
-  <div class="panel panel-default">
-    <div class="panel-body">
+    
+    <div class="list-group-item" id = "item_<%= item.id %>">
       <div class="row">
-
         <div class="col-xs-2">
           <div class="thumbnail">
             <% if item.product_images.empty? %>
@@ -20,13 +20,28 @@
 
         <div class="col-xs-10">
           <p><%= item.description %></p>
-          <span class="pull-right"><%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, edit_product_image_path(id: 1, image_upload_id: item.image_upload_id), style: "margin-right: 10px" %> <%= link_to '<i class="fa fa-chevron-circle-right"></i> Details'.html_safe, item_path(item), style: "margin-right: 10px" %> <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(item), style: "margin-right: 10px" if item.user_id == current_user.id %> <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: { confirm: "Are you sure?" } %></span>
+          <span class="pull-right">
+            <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, edit_product_image_path(id: 1, image_upload_id: item.image_upload_id), style: "margin-right: 10px" %>
+            <%= link_to '<i class="fa fa-chevron-circle-right"></i> Details'.html_safe, item_path(item), style: "margin-right: 10px" %>
+            <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(item), style: "margin-right: 10px" if item.user_id == current_user.id %> 
+            <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: { confirm: "Are you sure?" } %>
+          </span>
+          
         </div>
-
+        <!-- col-xs-10 -->
       </div>
+      <!-- row -->
     </div>
-  </div>
-  
+    <!-- list-group-item -->
+
+    <script type="text/javascript">
+      $("#item_<%= item.id %>").click(function(){
+         window.location = "/items/<%= item.id %>";
+      })
+
+    </script>
+
   <% end %>
 
 </div>
+
