@@ -56,6 +56,8 @@ gem 'fog', '~> 1.37'
 
 gem 'stripe'
 
+gem 'twitter'
+
 # datepicker
 # gem 'momentjs-rails', '>= 2.9.0'
 # gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
