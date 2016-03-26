@@ -41,6 +41,9 @@ gem 'bootstrap_form'
 # easier forms
 gem 'simple_form'
 gem 'country_select'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
 
 # image uploading
 gem 'carrierwave'

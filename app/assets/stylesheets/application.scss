@@ -11,8 +11,11 @@
  * file per style scope.
  *
  *= require rails_bootstrap_forms
+ *= require bootstrap
+ *= require bootstrap-datetimepicker
  *= require_self
  *= require_tree .
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';

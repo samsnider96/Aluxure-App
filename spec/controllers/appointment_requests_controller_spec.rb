@@ -28,4 +28,12 @@ RSpec.describe AppointmentRequestsController, type: :controller do
       expect(response).to render_template :new
     end
   end
+
+  describe "POST #create" do
+    it "should set end time 30 minutes after the start time" do
+      # post :create, { appointment_request: { company_id: 1, user_id: 1, start_time: DateTime.now } }
+      # expect(AppointmentRequest.count).to eq(1)
+      # expect(@ar.end_time.to_i).to eq(@ar.start_time + 30.minutes.to_i)
+    end
+  end
 end

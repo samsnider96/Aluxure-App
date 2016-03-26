@@ -20,7 +20,7 @@ class AppointmentRequestsController < ApplicationController
   end
 
   def create
-    @appointment_request = AppointmentRequest.create(appointment_request_params)
+    @appointment_request = AppointmentRequest.create(appointment_request_params, end_time: DateTime.parse(params[:appointment_request][:start_time]) + 30.minutes)
     if @appointment_request.save
       params[:items].each{ |item| @appointment_request.appointment_items.create(item_id: item) } # create appointment item objects for each item
       redirect_to appointment_requests_path
@@ -33,6 +33,6 @@ class AppointmentRequestsController < ApplicationController
   private
 
   def appointment_request_params
-    params.require(:appointment_request).permit(:company_id, :user_id, :start_time, :end_time, :approved, :declined)
+    params.require(:appointment_request).permit(:company_id, :user_id, :start_time, :end_time, :approved, :declined, :sched_date_field, :sched_time_field)
   end
 end
