@@ -49,6 +49,7 @@ FactoryGirl.define do
     material "Material"
     condition "normal"
     description "blah"
+    gender "Mens"
   end
 
   factory :appointment_request do
