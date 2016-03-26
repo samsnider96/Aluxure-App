@@ -22,7 +22,6 @@ class AppointmentRequestsController < ApplicationController
 
   def create
     params[:appointment_request][:end_time] = (DateTime.parse(params[:appointment_request][:start_time]) + 30.minutes).strftime('%Y-%m-%d %k:%M')
-    binding.pry
     @appointment_request = AppointmentRequest.create(appointment_request_params)
     if @appointment_request.save
       params[:items].each{ |item| @appointment_request.appointment_items.create(item_id: item) } # create appointment item objects for each item
