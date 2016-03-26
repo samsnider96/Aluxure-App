@@ -8,5 +8,8 @@ RSpec.describe Item, :type => :model do
     it { should validate_presence_of(:condition)}
     it { should validate_presence_of(:description)}
     it { should validate_presence_of(:image_upload_id)}
+    it { should validate_presence_of(:gender)}
+    it { should validate_presence_of(:size)}
+    it { should validate_presence_of(:material)}
   end
 end

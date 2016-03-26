@@ -17,6 +17,10 @@
   <%= f.input :sub_category, collection: ["N/A"] %>
   <%= f.input :brand, collection: Item::MENS_APPAREL_BRANDS %>
   <%= f.input :size, collection: Item::MENS_SHIRT_SIZES %>
+  <%= f.input :sleeve_length, collection: Item::MENS_SLEEVE_LENGTH %>
+  <%= f.input :inseam_length, collection: Item::MENS_INSEAM_LENGTH %>
+  <%= f.input :suit_length, collection: Item::MENS_SUIT_LENGTH %>
+  <%= f.input :shoe_width, collection: Item::MENS_SHOE_WIDTH %>
   <%= f.input :color, collection: Item::COLORS %>
   <%= f.input :material, collection: Item::MENS_APPAREL_MATERIALS %>
   <%= f.input :condition, collection: Item::CONDITION %>
@@ -33,6 +37,9 @@
 
 <script type="text/javascript">
 
+hideExtraFields();
+
+// make option values for form
 function makeList(array){
   var list = "";
   for (var i = 0; i < array.length; i++) {
@@ -41,6 +48,7 @@ function makeList(array){
   return list;
 }
 
+// return true if mens item
 function isMens() {
   if ($('#item_gender option:selected').text() == "<%= Item::GENDERS[0] %>") {
     return true;
@@ -83,6 +91,14 @@ var mens_shoe_width = makeList(<%= raw(Item::MENS_SHOE_WIDTH) %>);
 
 var selected = $('#item_gender option:selected').text();
 
+// hide extra form fields
+function hideExtraFields(){
+  $("label[for=item_sleeve_length], #item_sleeve_length").hide();
+  $("label[for=item_inseam_length], #item_inseam_length").hide();
+  $("label[for=item_suit_length], #item_suit_length").hide();
+  $("label[for=item_shoe_width], #item_shoe_width").hide();
+}
+
 $("#item_gender").on('change',function(){
     var selected = $('#item_gender option:selected').text();
     if(selected == "<%= Item::GENDERS[0] %>"){
@@ -93,12 +109,14 @@ $("#item_gender").on('change',function(){
 });
 
 $("#item_category").on('change', function(){
-  var selected = $('#item_category option:selected').text();
+    hideExtraFields();
+    var selected = $('#item_category option:selected').text();
     if(selected == "Shoes" && isMens()){
         $("#item_sub_category").html(mens_shoe_categories);
         $("#item_brand").html(mens_shoe_brands);
         $("#item_material").html(mens_shoe_materials);
         $("#item_size").html(mens_shoe_sizes);
+        $("label[for=item_shoe_width], #item_shoe_width").show();
     } else if(selected == "Shoes" && !isMens()){
         $("#item_sub_category").html(womens_shoe_categories);
         $("#item_brand").html(womens_shoe_brands);
@@ -107,14 +125,17 @@ $("#item_category").on('change', function(){
     } else if(selected == "Bags" && !isMens()) {
         $("#item_sub_category").html(womens_bag_categories);
         $("#item_brand").html(womens_handbag_brands);
-    } else if (selected == "Shirt" && isMens()){
+    } else if (selected == "Shirts" && isMens()){
         $("#item_size").html(mens_shirt_sizes);
+        $("label[for=item_sleeve_length], #item_sleeve_length").show();
     } else if(selected == "Pants" && isMens()) {
         $("#item_size").html(mens_pants_sizes);
+        $("label[for=item_inseam_length], #item_inseam_length").show();
     } else if((selected == "Outerwear" || selected == "Sport Coat") && isMens()) {
         $("#item_size").html(mens_jacket_sizes);
     } else if(selected == "Suits" && isMens()) {
         $("#item_size").html(mens_suit_length);
+        $("label[for=item_suit_length], #item_suit_length").show();
     } else if(isMens()) {
         $("#item_brand").html(mens_apparel_brands);
         $("#item_material").html(mens_apparel_materials);
