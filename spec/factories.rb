@@ -26,6 +26,8 @@ FactoryGirl.define do
     other_address_details "etc. etc."
     phone "201-652-1441"
     email "example@example.com"
+    annual_revenue "200000"
+    number_of_locations "1"
   end
 
   factory :comment do
