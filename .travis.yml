@@ -22,3 +22,5 @@ deploy:
   run:
     - "rake db:migrate"
     - restart
+notifications:
+  slack: aluxure-thinkternship:fNtE6cJHUC0PbYnMQuJzGzjO

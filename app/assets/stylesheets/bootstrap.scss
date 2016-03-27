@@ -5560,6 +5560,11 @@ a.list-group-item:focus {
   background-color: #f5f5f5;
 }
 
+.list-group-item.active {
+  background-color: lightgray;
+}
+
+
 a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus {
