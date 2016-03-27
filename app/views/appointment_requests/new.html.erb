@@ -20,7 +20,7 @@
           </div>
 
           <div class="col-xs-10">
-            <p><%= item.description %></p>
+            <%= render partial: "items/card", locals: {item: item} %>
           </div>
 
         </div>
