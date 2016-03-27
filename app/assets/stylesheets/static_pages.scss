@@ -29,6 +29,9 @@
 }
 // end of navbar stuff
 
+.btn-fixed {
+  width: 150px;
+}
 
 
 @mixin blur {
@@ -44,7 +47,7 @@
   height: 100%;
   text-align: center;
   color:white;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.2);
 }
 
 #blur_image {
