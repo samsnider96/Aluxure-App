@@ -14,7 +14,10 @@
   <%= f.input :other_address_details %>
   <%= f.input :phone %>
   <%= f.input :email %>
-  <%= f.label "Company Image" %>
+  <%= f.input :url, label: "Website" %>
+  <%= f.input :number_of_locations, collection: Company::LOCATION_NUMBER_OPTIONS, label: 'Number of Locations' %>
+  <%= f.input :annual_revenue, collection: Company::ANNUAL_REVENUE_OPTIONS, label: 'Annual Revenue' %>
+  <%= f.label "Company Logo" %>
   <%= f.file_field :photo %>
   <br>
   <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Please wait..." } %>
