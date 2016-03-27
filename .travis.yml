@@ -4,11 +4,11 @@ rvm:
 - 2.2.0
 - 2.2.3
 env:
-  - DB=postgresql
+- DB=postgresql
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec
 before_script:
 - psql -c 'create database aluxure_test;' -U postgres
 services:
@@ -20,7 +20,8 @@ deploy:
   app: aluxure
   strategy: git
   run:
-    - "rake db:migrate"
-    - restart
+  - rake db:migrate
+  - restart
 notifications:
-  slack: aluxure-thinkternship:fNtE6cJHUC0PbYnMQuJzGzjO
+  slack:
+    secure: fJHDXwd5icMGN13QZ5F9K7f7Cz1WYF3h3+EM6pPIMLevpirfUQKh/8O7CzCYSXSZBH+jNN+cvoiE2V7U5M7Dw1CmFCHsdQoVqwslU9PvWA8nuCnQ9PQfcNd5qqEWlaZbmOj5BtdPriIoMPcdmXaDTyHhbSoGE/qZFAEFD3Q4AdAxu21U6kbxJyNVIWczjBzUJZ4QHfftGJO8acEha9MdbmxiIO9h+YUTydAyKA4e7SAnfaCPYzyfqv0RVVPzbKQIgxExXqzP8cVOaXMuKltHvKmYhOdEesicvZ5TJ/Pi7eBUpP9+4tPObIT6NjPhD8RyRjJaJOxv+WCP+7DhFqTFlQOJYzjQrZ1uyekRr4g0Ht0EAc8Gw8i+9SDT57SC39bSqcrFsblBiy5bRNiwVh9WO4dTVIyyFFmuPJWnE3k+171gjPkOKvjg7LPnc1QVmKko5eyoAPXYcPZFjdp6bjRS7CMq2PXfBaAR4E2OvTwI48s9TEsbx/x3n5RpDFnu/VcpMPdM7NQpyXHuroIkQrTiamKNOUuYy7lTT1dR9Gz8xQZOvm58eNF1t5adk8nRcCBtBtgMDDtl/QMDHfArK8XiDgXCCL8gOjQ/6EF7twMP2FntWWxnnlFfFV248mmzQLbmYQojM9jstA9qPKUSqtAKoWEsUVnfGWjXRAz4G4zTDMk=

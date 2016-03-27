@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="col-xs-10">
-                  <p><%= item.description %></p>
+                  <%= render partial: "items/card", locals: {item: item} %>
                   <span class="pull-right"><%= link_to 'View', item_path(item) %></span>
                 </div>
 
