@@ -3,7 +3,7 @@ class AppointmentRequestsController < ApplicationController
   before_action :check_invalid_date, only: :create
 
   def index
-    @appointment_requests = current_user.appointment_requests.order(updated_at: :desc)
+    @appointment_requests = current_user.appointment_requests.order(start_time: :asc)
     @incoming_requests = AppointmentRequest.where(company_id: current_user.company_id)
   end
 
