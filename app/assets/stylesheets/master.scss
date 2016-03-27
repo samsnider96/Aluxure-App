@@ -18,6 +18,11 @@
   max-height: 60vh
 }
 
+.no_bullets {
+  list-style-type:none; 
+  padding-left:0px;
+}
+
 @mixin img_circle {
   border-radius: 50%;
 }
