@@ -7,7 +7,7 @@
     <a class="list-group-item" id="company_<%= company.id %>">
       <div class="row">
 
-        <div class="col-xs-2">
+        <div class="col-xs-4 col-sm-2">
           <div class="thumbnail">
             <% if company.photo.nil? %>
               <%= image_tag 'shirt.png', class: 'item_image_sm' %>
@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <div class="col-xs-10">
+        <div class="col-xs-8 col-sm-10">
           <div class="row">
             <div class="col-xs-12 col-md-6">
               <h3><%= company.name %></h3>

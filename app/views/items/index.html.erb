@@ -8,7 +8,7 @@
     
     <div class="list-group-item" id = "item_<%= item.id %>">
       <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-4 col-sm-2">
           <div class="thumbnail">
             <% if item.product_images.empty? %>
               <%= image_tag 'shirt.png', class: 'item_image_sm' %>
@@ -18,7 +18,7 @@
           </div>
         </div>
 
-        <div class="col-xs-10">
+        <div class="col-xs-8 col-sm-10">
           <%= render partial: "items/card", locals: {item: item} %>
 
           <span class="pull-right">
