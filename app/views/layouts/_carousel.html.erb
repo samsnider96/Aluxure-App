@@ -2,30 +2,44 @@
 <div id="blur_parent">
   <div id="blur_image">
   </div>
-    <div class="image_text_wrapper">
-      <div class="image_text">
 
-        <!-- flash messages -->
-        <% flash.each do |message_type, message| %>
-          <% if message_type == "notice" %>
-            <div class="alert alert-info alert-dismissible"><%= notice %></div>
-          <% elsif message_type == "alert" %>
-            <div class="alert alert-danger alert-dismissible"><%= alert %></div>
-          <% else %>
-            <div class="alert alert-<%= message_type %> alert-dismissible"><%= message %></div>
-          <% end %>
+  <div class="image_text_wrapper">
+    <div class="image_text">
+
+      <!-- flash messages -->
+      <% flash.each do |message_type, message| %>
+        <% if message_type == "notice" %>
+          <div class="alert alert-info alert-dismissible"><%= notice %></div>
+        <% elsif message_type == "alert" %>
+          <div class="alert alert-danger alert-dismissible"><%= alert %></div>
+        <% else %>
+          <div class="alert alert-<%= message_type %> alert-dismissible"><%= message %></div>
         <% end %>
+      <% end %>
 
-        <div style="margin-top: 70px">
-          <%= image_tag 'logo_text.png', style: "height: 60px; display:block; margin: 0 auto;" %>
+      <div id="image_content">
+        <%= image_tag 'logo_text.png', style: "height: 60px; display:block; margin: 0 auto;" %>
 
-          <h1>Simplifying Consignment.</h1>
-          <br>
-          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-danger btn-fixed' %>
-          <%= link_to 'Log In', new_user_session_path, class: 'btn btn-lg btn-success btn-fixed' %>
-        </div>
+        <h1>Simplifying Consignment.</h1>
+        <br>
+        <div class="btn btn-lg btn-danger btn-fixed" id ="sign_up">Sign Up</div>
+<!--           <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-danger btn-fixed' %> -->          
+        <%= link_to 'Log In', new_user_session_path, class: 'btn btn-lg btn-success btn-fixed' %>
       </div>
-    </div>
 
-  
+      <div id="sign_up_options">
+        <h1 style="font-family: 'pacificoregular'">I am a</h1>
+        <hr>
+        <%= link_to 'Consignor', new_user_registration_path, class: 'btn btn-lg btn-primary btn-fixed' %>
+        <%= link_to 'Store', new_company_user_path, class: 'btn btn-lg btn-danger btn-fixed' %>
+        <br>
+        <br>
+        <p>or <%= link_to 'Log In', new_user_session_path, style: 'color: white; text-decoration: underline;' %></p>
+      </div>
+      <!-- sign_up_options -->
+    </div>
+    <!-- image_text -->
+  </div>
+  <!-- image_text_wrapper -->
 </div>
+

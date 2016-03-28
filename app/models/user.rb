@@ -14,5 +14,9 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :phone, presence: true
   validates :phone, format: { with: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, message: "Please enter phone number with xxx-xxx-xxxx" }
 
+  def is_company_account?
+    return false unless self.type == "CompanyUser"
+    true
+  end
   
 end

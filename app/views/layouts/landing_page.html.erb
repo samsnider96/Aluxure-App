@@ -22,6 +22,7 @@
 <%= render 'layouts/footer' %>
 
 <script type="text/javascript">
+
 $(function() {
   $('a[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -40,6 +41,14 @@ $(function() {
 $(function() {
   $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
 });
+
+$("#sign_up").on("click", function(){
+  $("#image_content").fadeOut(800);
+  setTimeout(function(){
+    $("#sign_up_options").fadeIn("slow");
+  }, 800);
+});
+
 </script>
 
 </body>
