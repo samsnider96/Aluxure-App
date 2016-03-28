@@ -1,6 +1,9 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
+  factory :admin_user do
+    
+  end
 
   factory :user do
     id 1
