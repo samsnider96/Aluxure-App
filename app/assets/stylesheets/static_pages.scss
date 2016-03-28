@@ -33,6 +33,15 @@
   width: 150px;
 }
 
+#image_content {
+  margin-top: 70px
+}
+
+#sign_up_options {
+  display: none;
+  margin-top: 100px;
+}
+
 
 @mixin blur {
   -webkit-filter: blur(3px);
