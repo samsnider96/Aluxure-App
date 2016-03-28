@@ -20,11 +20,15 @@
       <div class="col-lg-3 col-md-3">
         <h3>LATEST TWEETS</h3>
         <ul class="latest-tweets">
-          <% $client.user_timeline("a_LuxuRe").each do |tweet| %>
-            <li>
-              <i class="fa fa-twitter"></i> <%= tweet.text %>
-            </li>
+          <% $client.user_timeline("a_LuxuRe").each_with_index do |tweet, i| %>
+            <% if i < 2 %>
+              <li>
+                <i class="fa fa-twitter"></i> <%= tweet.text %>
+              </li>
+            <% end %>
+            <!-- if i < 2 -->
           <% end %>
+          <!-- each_with_index -->
         </ul>
       </div>
 
