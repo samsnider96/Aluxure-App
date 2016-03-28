@@ -7,24 +7,40 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+=== Ruby version
+ruby version 2.2.3
 
-* System dependencies
+=== Rails version
+rails version 4.2.4
 
-* Configuration
+=== Configuration
+Go to your terminal and enter the following:
 
-* Database creation
+<code>git clone https://github.com/takehiromouri/Aluxure-App.git</code>
 
-* Database initialization
+<code>bundle install</code>
 
-* How to run the test suite
+=== Database creation/initialization
+Run the following commands and you should be all set!
 
-* Services (job queues, cache servers, search engines, etc.)
+<code>rake db:create:all</code>
 
-* Deployment instructions
+<code>rake db:migrate</code>
 
-* ...
+<code>rake db:seed</code>
 
+<code>rails s</code>
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+=== How to run the test suite
+Before we ship anything, we want all of our tests to pass.
+
+TravisCI automates this process for us when you push up a commit, but it's also good to run it locally.
+
+<code>bundle exec rspec</code>
+
+This will run all specs(tests) written with rspec (a testing framework).
+
+=== Deployment instructions
+
+TravisCI will deploy the application live to Heroku if the build passes.
+
