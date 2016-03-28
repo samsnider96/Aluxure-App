@@ -8,18 +8,22 @@
         <!-- flash messages -->
         <% flash.each do |message_type, message| %>
           <% if message_type == "notice" %>
-            <p class="alert alert-info alert-dismissible"><%= notice %></p>
+            <div class="alert alert-info alert-dismissible"><%= notice %></div>
           <% elsif message_type == "alert" %>
-            <p class="alert alert-danger alert-dismissible"><%= alert %></p>
+            <div class="alert alert-danger alert-dismissible"><%= alert %></div>
           <% else %>
             <div class="alert alert-<%= message_type %> alert-dismissible"><%= message %></div>
           <% end %>
         <% end %>
 
-        <h1>Simplifying Consignment.</h1>
-        <br>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-danger btn-fixed' %>
-        <%= link_to 'Log In', new_user_session_path, class: 'btn btn-lg btn-success btn-fixed' %>
+        <div style="margin-top: 70px">
+          <%= image_tag 'logo_text.png', style: "height: 60px; display:block; margin: 0 auto;" %>
+
+          <h1>Simplifying Consignment.</h1>
+          <br>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-danger btn-fixed' %>
+          <%= link_to 'Log In', new_user_session_path, class: 'btn btn-lg btn-success btn-fixed' %>
+        </div>
       </div>
     </div>
 

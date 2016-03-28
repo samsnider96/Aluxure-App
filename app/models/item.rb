@@ -35,7 +35,7 @@ class Item < ActiveRecord::Base
 
   MENS_CATEGORIES = ["Shirts", "Outerwear", "Suits", "Sport Coats", "Sweaters & Hoodies", "Denim", "Active Wear", "Pants", "Polos & Tees", "Shoes", "Shorts", "Swimwear", "OTHER"]
 
-  MENS_SHIRT_SIZES = ["S", "M", "L", "XL", "XXL", "XXL", "15", "15.5", "16", "16.5", "17", "17.5", "18", "18.5", "19", "19.5", "20", "OTHER "]
+  MENS_SHIRT_SIZES = ["S", "M", "L", "XL", "XXL", "XXXL", "15", "15.5", "16", "16.5", "17", "17.5", "18", "18.5", "19", "19.5", "20", "OTHER "]
 
   MENS_SLEEVE_LENGTH = ["32", "32/33", "33", "33/34", "34", "34/35", "35", "35/36", "36", "36/37", "37", "37/38", "38", "OTHER"]
 
