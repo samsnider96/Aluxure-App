@@ -8,15 +8,17 @@ application up and running.
 Things you may want to cover:
 
 === Ruby version
-ruby version 2.2.3
+ruby -v <code>2.2.3</code>
 
 === Rails version
-rails version 4.2.4
+rails -v <code>4.2.4</code>
 
 === Configuration
-Go to your terminal and enter the following:
+Go to your terminal and enter the following to clone the app locally:
 
 <code>git clone https://github.com/takehiromouri/Aluxure-App.git</code>
+
+Run bundle install to install gems/dependencies
 
 <code>bundle install</code>
 
