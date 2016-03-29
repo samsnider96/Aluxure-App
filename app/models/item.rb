@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
 
   WOMENS_SIZES = ["XXS", "XS", "S", "M ", "L", "XL", "XXL", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "0P", "2P", "4P", "6P", "8P", "10P", "12P", "14P", "16P", "28", "30", "32", "34", "36", "38", "40", "42", "44", "OTHER"]
 
-  WOMENS_SHOE_WIDTH = ["Narrow", "Medium", "Wide"]
+  WOMENS_SHOE_WIDTH = ["", "Narrow", "Medium", "Wide"]
 
   WOMENS_SHOE_SIZES = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12"]
 
