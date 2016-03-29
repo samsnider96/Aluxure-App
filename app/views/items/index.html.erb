@@ -2,7 +2,7 @@
 <%= link_to ('<i class="fa fa-plus-circle"></i> Add New Item').html_safe, new_item_path %>
 <hr>
 
-<div class="list-group" style="cursor: pointer; cursor: hand;">
+<div class="list-group">
 
   <% @items.each do |item| %>
     
@@ -36,13 +36,13 @@
     <!-- list-group-item -->
 
     <script type="text/javascript">
-      $("#item_<%= item.id %>").click(function(){
-         window.location = "/items/<%= item.id %>";
-      });
+      // $("#item_<%= item.id %>").click(function(){
+      //    window.location = "/items/<%= item.id %>";
+      // });
 
-      $('.list-group-item').hover(function(){
-        $(this).toggleClass('active');
-      });
+      // $('.list-group-item').hover(function(){
+      //   $(this).toggleClass('active');
+      // });
 
     </script>
 
