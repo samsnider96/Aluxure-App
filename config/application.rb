@@ -18,7 +18,7 @@ module Aluxure
 
 
     # default Time Zone
-    config.time_zone = 'Eastern Time (US & Canada)'
+    config.time_zone = 'America/New_York'
     
     config.active_record.default_timezone = :local
     config.active_record.time_zone_aware_attributes = false 
