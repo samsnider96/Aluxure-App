@@ -11,6 +11,7 @@
   var womens_shoe_sizes = makeList(<%= raw(Item::WOMENS_SHOE_SIZES) %>);
   var womens_shoe_materials = makeList(<%= raw(Item::WOMENS_SHOE_MATERIALS) %>);
   var womens_shoe_brands = makeList(<%= raw(Item::WOMENS_SHOE_BRANDS) %>);
+  var womens_shoe_width = makeList(<%= raw(Item::WOMENS_SHOE_WIDTH) %>);
 
   var mens_categories = makeList(<%= raw(Item::MENS_CATEGORIES) %>);
   var mens_apparel_brands = makeList(<%= raw(Item::MENS_APPAREL_BRANDS) %>);
@@ -99,6 +100,8 @@
         $("#item_brand").html(womens_shoe_brands);
         $("#item_material").html(womens_shoe_materials);
         $("#item_size").html(womens_shoe_sizes);
+        $("label[for=item_shoe_width], #item_shoe_width").show();
+        $("#item_shoe_width").html(womens_shoe_width);
     } else if(selected == "Bags" && !isMens()) {
         $("label[for=item_sub_category], #item_sub_category").show();
         $("#item_sub_category").html(womens_bag_categories);
