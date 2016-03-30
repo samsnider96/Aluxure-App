@@ -12,7 +12,8 @@ FactoryGirl.define do
     sequence(:email, 100) { |n| "person#{n}@example.com" }
     phone "201-652-1441"
     password "password"
-    password_confirmation "password"  
+    password_confirmation "password" 
+    confirmed_at          Time.now 
   end
 
   factory :company do
