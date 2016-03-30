@@ -6,11 +6,11 @@ Rails.application.initialize!
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-   :tls => true,
-   :address => "smtp.gmail.com",
-   :port => 587,
-   :domain => "gmail.com",
-   :authentication => :login,
-   :user_name => "[username]",
-   :password => "[password]"
+  :address        => 'smtp.office365.com',
+  :port           => '587',
+  :authentication => :login,
+  :user_name      => ENV['SMTP_USERNAME'],
+  :password       => ENV['SMTP_PASSWORD'],
+  :domain         => 'aluxurelife.com',
+  :enable_starttls_auto => true
  }
