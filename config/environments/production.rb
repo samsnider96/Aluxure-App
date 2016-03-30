@@ -17,12 +17,12 @@ Rails.application.configure do
     :authentication => :login,
     :user_name      => ENV['SMTP_USERNAME'],
     :password       => ENV['SMTP_PASSWORD'],
-    :domain         => 'aluxurelife.com',
+    :domain         => 'aluxure.herokuapp.com',
     :enable_starttls_auto => true
   }
 
 
-  config.action_mailer.default_url_options = { :host => 'aluxurelife.com' }
+  config.action_mailer.default_url_options = { :host => 'aluxure.herokuapp.com' }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
