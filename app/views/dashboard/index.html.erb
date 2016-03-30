@@ -19,7 +19,7 @@
         <!-- panel-body -->
         <div class="panel-footer">
           <%= link_to ('<i class="fa fa-list"></i> My Company').html_safe, company_path(current_user.company_id), class: 'btn btn-success center-block' if current_user.company_id %>
-          <%= link_to ('<i class="fa fa-list"></i> My Company').html_safe, company_path(current_user.company_id), class: 'btn btn-success center-block', disabled: true unless current_user.company_id %>
+          <%= link_to ('<i class="fa fa-list"></i> My Company').html_safe, '#', class: 'btn btn-success center-block', disabled: true unless current_user.company_id %>
         </div>
         <!-- panel footer -->
       </div>

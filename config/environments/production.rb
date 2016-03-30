@@ -1,13 +1,26 @@
 Rails.application.configure do
-  ActionMailer::Base.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => ENV['MAILGUN_SMTP_PORT'],
+  #   :address        => ENV['MAILGUN_SMTP_SERVER'],
+  #   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  #   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  #   :domain         => 'aluxurelife.com',
+  #   :authentication => :plain,
+  # }
+  # ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.office365.com',
+    :port           => '587',
+    :authentication => :login,
+    :user_name      => ENV['SMTP_USERNAME'],
+    :password       => ENV['SMTP_PASSWORD'],
     :domain         => 'aluxurelife.com',
-    :authentication => :plain,
+    :enable_starttls_auto => true
   }
-  ActionMailer::Base.delivery_method = :smtp
+
 
   config.action_mailer.default_url_options = { :host => 'aluxurelife.com' }
 
@@ -41,7 +54,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
