@@ -1,4 +1,17 @@
 Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.office365.com',
+    :port           => '587',
+    :authentication => :login,
+    :user_name      => ENV['SMTP_USERNAME'],
+    :password       => ENV['SMTP_PASSWORD'],
+    :domain         => 'aluxurelife.com',
+    :enable_starttls_auto => true
+  }
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
