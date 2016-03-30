@@ -1,28 +1,29 @@
 Rails.application.configure do
-  # ActionMailer::Base.smtp_settings = {
-  #   :port           => ENV['MAILGUN_SMTP_PORT'],
-  #   :address        => ENV['MAILGUN_SMTP_SERVER'],
-  #   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  #   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  #   :domain         => 'aluxurelife.com',
-  #   :authentication => :plain,
-  # }
-  # ActionMailer::Base.delivery_method = :smtp
-
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = {
-    :address        => 'smtp.office365.com',
-    :port           => '587',
-    :authentication => :login,
-    :user_name      => ENV['SMTP_USERNAME'],
-    :password       => ENV['SMTP_PASSWORD'],
-    :domain         => 'aluxure.herokuapp.com',
-    :enable_starttls_auto => true
+  ActionMailer::Base.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'aluxurelife.com',
+    :authentication => :plain,
   }
+  ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => 'aluxurelife.com' }
+  # config.action_mailer.delivery_method = :smtp
+
+  # config.action_mailer.smtp_settings = {
+  #   :address        => 'smtp.office365.com',
+  #   :port           => '587',
+  #   :authentication => :login,
+  #   :user_name      => ENV['SMTP_USERNAME'],
+  #   :password       => ENV['SMTP_PASSWORD'],
+  #   :domain         => 'aluxurelife.com',
+  #   :enable_starttls_auto => true
+  # }
 
 
-  config.action_mailer.default_url_options = { :host => 'aluxure.herokuapp.com' }
+  
 
   # Settings specified here will take precedence over those in config/application.rb.
 
