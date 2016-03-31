@@ -12,6 +12,7 @@ class AppointmentRequestsController < ApplicationController
     @company = Company.find(@appointment_request.company_id)
     @appointment_items = @appointment_request.appointment_items
     @comments = @appointment_request.comments.order(updated_at: :desc)
+    @user = User.find(@appointment_request.user_id)
   end
 
   def new
