@@ -3,6 +3,26 @@
   padding-bottom: 100px;
 }
 
+.picker-switch  {
+  a {
+      color: #BF2D29;
+    }
+  .fa {
+    font-size: 30px;
+
+  }
+}
+
+.scrollable {
+  overflow-y: auto; 
+  max-height: 60vh
+}
+
+.no_bullets {
+  list-style-type:none; 
+  padding-left:0px;
+}
+
 @mixin img_circle {
   border-radius: 50%;
 }
@@ -16,6 +36,14 @@
 
 .panel-body-dashboard {
   height: 170px;
+}
+
+.panel_well {
+  height: 122px;
+} 
+
+.panel_well_sm {
+  height: 100px;
 }
 
 .embed-responsive {

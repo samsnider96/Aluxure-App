@@ -1,28 +1,48 @@
 == README
 
+{<img src="https://travis-ci.org/takehiromouri/Aluxure-App.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/takehiromouri/Aluxure-App]
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+=== Ruby version
+ruby -v <code>2.2.3</code>
 
-* System dependencies
+=== Rails version
+rails -v <code>4.2.4</code>
 
-* Configuration
+=== Configuration
+Go to your terminal and enter the following to clone the app locally:
 
-* Database creation
+<code>git clone https://github.com/takehiromouri/Aluxure-App.git</code>
 
-* Database initialization
+Run bundle install to install gems/dependencies
 
-* How to run the test suite
+<code>bundle install</code>
 
-* Services (job queues, cache servers, search engines, etc.)
+=== Database creation/initialization
+Run the following commands and you should be all set!
 
-* Deployment instructions
+<code>rake db:create:all</code>
 
-* ...
+<code>rake db:migrate</code>
 
+<code>rake db:seed</code>
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+<code>rails s</code>
+
+=== How to run the test suite
+Before we ship anything, we want all of our tests to pass.
+
+TravisCI automates this process for us when you push up a commit, but it's also good to run it locally.
+
+<code>bundle exec rspec</code>
+
+This will run all specs(tests) written with rspec (a testing framework).
+
+=== Deployment instructions
+
+TravisCI will deploy the application live to Heroku if the build passes.
+

@@ -1,23 +1,31 @@
-<div class="row">
-  <h1>Item Photos</h1>
-  <% if @images %>
-    <% @images.each do |image| %>
-      <div class="col-xs-12 col-md-3">
-        <%= image_tag image.photo.thumb.url, class: 'square item_image', style: 'padding-bottom: 0px' %>
-      </div>
+<div class="well">
+  <div class="row">
+    <div class="col-xs-12"><h1>Item Photos</h1></div>
+    <% if @images %>
+      <% @images.each do |image| %>
+        <div class="col-xs-12 col-md-3">
+          <%= image_tag image.photo.thumb.url, class: 'square item_image', style: 'padding-bottom: 0px' %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <h1>Enter Details</h1>
 
 <%= simple_form_for @item do |f| %>
-  <%= f.input :brand %>
-  <%= f.input :category %>
-  <%= f.input :color %>
-  <%= f.input :size %>
-  <%= f.input :material %>
-  <%= f.input :condition %>
+  <%= f.input :gender, collection: Item::GENDERS %>
+  <%= f.input :category, collection: Item::MENS_CATEGORIES %>
+  <%= f.input :sub_category, collection: ["N/A"] %>
+  <%= f.input :brand, collection: Item::MENS_APPAREL_BRANDS %>
+  <%= f.input :size, collection: Item::MENS_SHIRT_SIZES %>
+  <%= f.input :sleeve_length, collection: Item::MENS_SLEEVE_LENGTH %>
+  <%= f.input :inseam_length, collection: Item::MENS_INSEAM_LENGTH %>
+  <%= f.input :suit_length, collection: Item::MENS_SUIT_LENGTH %>
+  <%= f.input :shoe_width, collection: Item::MENS_SHOE_WIDTH %>
+  <%= f.input :color, collection: Item::COLORS %>
+  <%= f.input :material, collection: Item::MENS_APPAREL_MATERIALS %>
+  <%= f.input :condition, collection: Item::CONDITION %>
   <%= f.input :alterations %>
   <%= f.input :description %>
   <%= f.input :image_upload_id, as: :hidden, input_html: { value: params[:image_upload_id] } %>
@@ -28,3 +36,17 @@
 
 <%= link_to 'Cancel', dashboard_path, class: 'btn btn-danger btn-lg btn-block' unless params[:image_upload_id] %>
 <%= link_to 'Cancel', image_upload_path(params[:image_upload_id]), method: :delete, class: 'btn btn-danger btn-lg btn-block', data: {confirm: "Are you sure?"} if params[:image_upload_id] %>
+
+<%= render partial: 'items/form' %>
+
+
+
+
+
+
+
+
+
+
+
+

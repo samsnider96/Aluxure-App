@@ -1,6 +1,9 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
+  factory :admin_user do
+    
+  end
 
   factory :user do
     id 1
@@ -9,7 +12,8 @@ FactoryGirl.define do
     sequence(:email, 100) { |n| "person#{n}@example.com" }
     phone "201-652-1441"
     password "password"
-    password_confirmation "password"  
+    password_confirmation "password" 
+    confirmed_at          Time.now 
   end
 
   factory :company do
@@ -26,6 +30,8 @@ FactoryGirl.define do
     other_address_details "etc. etc."
     phone "201-652-1441"
     email "example@example.com"
+    annual_revenue "200000"
+    number_of_locations "1"
   end
 
   factory :comment do
@@ -49,6 +55,7 @@ FactoryGirl.define do
     material "Material"
     condition "normal"
     description "blah"
+    gender "Mens"
   end
 
   factory :appointment_request do

@@ -1,8 +1,8 @@
 class AppointmentRequest < ActiveRecord::Base
   belongs_to :company
   belongs_to :user
-  has_many :comments
-  has_many :appointment_items
+  has_many :comments, dependent: :destroy
+  has_many :appointment_items, dependent: :destroy
   has_many :items, through: :appointment_items
 
   validates :company_id, :user_id, :start_time, :end_time, presence: true

@@ -1,0 +1,22 @@
+<h3><i class="fa fa-info-circle"></i> Company Details</h3>
+<address>
+  <strong><%= company.name %></strong><br>
+  <ul class="no_bullets">
+    <%= ("<li><strong>Phone:</strong> " + company.phone + "</li>").html_safe %>
+    <%= ("<li><strong>Email:</strong> " + company.email + "</li>").html_safe %>
+    <%= ("<li><strong>Website:</strong> " + company.url + "</li>").html_safe unless company.url.empty? %>
+    <%= ("<li><strong>Number of Locations:</strong> " + company.number_of_locations + "</li>").html_safe %>
+  </ul>
+  <hr>
+  <ul class="no_bullets">
+    <h3><i class="fa fa-map-marker"></i> Address</h3>
+    <%= ("<li>" + company.line_1 + "</li>").html_safe unless company.line_1.empty? %>
+    <%= ("<li>" + company.line_2 + "</li>").html_safe unless company.line_2.empty?  %>
+    <%= ("<li>" + company.line_3 + "</li>").html_safe unless company.line_3.empty? %>
+    <%= ("<li>" + company.city + ", ").html_safe %>
+    <%= ("<li>" + company.county_province + ", ").html_safe unless company.county_province.empty? %>
+    <%= ("<li>" + company.zip_or_postcode + "</li>").html_safe unless company.zip_or_postcode.empty? %>
+    <%= ("<li>" + company.country + "</li>").html_safe unless company.country == "US" %>
+    <%= ("<li>" + company.other_address_details + "</li>").html_safe unless company.other_address_details.empty? %>
+  </ul>
+</address>

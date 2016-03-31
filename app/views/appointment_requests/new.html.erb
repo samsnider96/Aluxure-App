@@ -1,33 +1,40 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 <h1>Appointment for <%= @company.name %></h1>
 
-<% @items.each do |item| %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
+<div class="scrollable well" style="max-height:50vh;">
+  <h3>Your Items</h3>
+  <% @items.each do |item| %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
 
-        <div class="col-xs-2">
-          <div class="thumbnail">
-            <% if item.product_images.empty? %>
-              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
-            <% else %>
-              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
-            <% end %>
+          <div class="col-xs-4 col-sm-2">
+            <div class="thumbnail">
+              <% if item.product_images.empty? %>
+                <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+              <% else %>
+                <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+              <% end %>
+            </div>
           </div>
-        </div>
 
-        <div class="col-xs-10">
-          <p><%= item.description %></p>
-        </div>
+          <div class="col-xs-8 col-sm-10">
+            <%= render partial: "items/card", locals: {item: item} %>
+          </div>
 
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
+<h2>Please enter your requested start time.</h2>
+<div class="col-xs-12 col-md-6">
 <%= simple_form_for AppointmentRequest.new, url: appointment_requests_path(items: @items), method: :post do |f| %>
-  <%= f.input :start_time, ampm: true %>
-  <%= f.input :end_time, ampm: true %>
+  <%= f.input :start_time, :as => :datetime_picker, label: "Requested Start Time" %>
   <%= f.input :company_id, as: :hidden, input_html: { value: @company.id } %>
   <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.submit 'Submit', class: 'btn btn-success btn-lg btn-block', data: { disable_with: "Please wait..." } %>
 <% end %>
+</div>

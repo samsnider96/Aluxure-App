@@ -6,24 +6,12 @@
       <div class="thumbnail">
         <%= image_tag @company.photo.thumb.url, class: 'item_image' %>
       </div>
-      <h3>Address Details</h3>
-      <address>
-      <strong><%= @company.name %></strong><br>
-      <%= @company.line_1 %><br>
-      <%= @company.line_2 %><br>
-      <%= @company.line_3 %><br>
-      <%= @company.city %><br>
-      <%= @company.county_province %><br>
-      <%= @company.zip_or_postcode %><br>
-      <%= @company.country %><br>
-      <%= @company.other_address_details %><br>
-      <%= @company.phone %><br>
-      <%= @company.email %><br>
-      </address>
+      <p><%= @company.description %></p>
     </div>
   </div>
   <div class="col-xs-12 col-md-8">
-    <p><%= @company.description %></p>
+    
+    <%= render partial: 'companies/details', locals: { company: @company } %>
     <span class="pull-right"><%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_company_path(@company) if current_user.company_id == @company.id %></span>
   </div>
 

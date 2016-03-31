@@ -2,7 +2,7 @@ class ItemSelectionsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @items = current_user.items.all
+    @items = current_user.items.order(updated_at: :desc)
   end
 
   def create

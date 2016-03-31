@@ -54,8 +54,9 @@ RSpec.describe ItemsController, type: :controller do
       product_image_2 = FactoryGirl.create(:product_image, id: 2, image_upload_id: image_upload.id, item_id: nil)
       sign_in user
       expect(product_image.item_id).to be_nil
-      post :create, { item: FactoryGirl.attributes_for(:item), image_upload_id: image_upload.id }
-      expect(Item.count).to eq(1)
+      expect{
+        post :create, { item: FactoryGirl.attributes_for(:item), image_upload_id: image_upload.id }
+      }.to change(Item, :count).by(1)
       expect(product_image.reload.item_id).to_not be_nil
       expect(product_image_2.reload.item_id).to_not be_nil
     end

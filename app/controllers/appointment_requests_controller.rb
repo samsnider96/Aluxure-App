@@ -1,8 +1,9 @@
 class AppointmentRequestsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_invalid_date, only: :create
 
   def index
-    @appointment_requests = current_user.appointment_requests.order(updated_at: :desc)
+    @appointment_requests = current_user.appointment_requests.order(start_time: :asc)
     @incoming_requests = AppointmentRequest.where(company_id: current_user.company_id)
   end
 
@@ -20,6 +21,7 @@ class AppointmentRequestsController < ApplicationController
   end
 
   def create
+    params[:appointment_request][:end_time] = (DateTime.parse(params[:appointment_request][:start_time]) + 30.minutes).strftime('%Y-%m-%d %k:%M')
     @appointment_request = AppointmentRequest.create(appointment_request_params)
     if @appointment_request.save
       params[:items].each{ |item| @appointment_request.appointment_items.create(item_id: item) } # create appointment item objects for each item
@@ -32,7 +34,16 @@ class AppointmentRequestsController < ApplicationController
 
   private
 
+  def check_invalid_date
+    begin
+      DateTime.parse(params[:appointment_request][:start_time])
+    rescue
+      flash[:danger] = "Invalid date"
+      redirect_to :back
+    end
+  end
+
   def appointment_request_params
-    params.require(:appointment_request).permit(:company_id, :user_id, :start_time, :end_time, :approved, :declined)
+    params.require(:appointment_request).permit(:company_id, :user_id, :start_time, :end_time, :approved, :declined, :sched_date_field, :sched_time_field)
   end
 end

@@ -4,76 +4,8 @@
     <div class="row">
       <div class="col-lg-3 col-md-3">
         <a class="footer-brand" href="/"><%= image_tag 'logo.png', class: "footer_logo" %></a>
-        <p>
-          äLuxuRē (www.aluxurelife.com) simplifies consignment. Our mobile app/web solution allows sellers and consignment stores to engage each other in a way that eliminates many of the frustrations encountered during the consignment process resulting in improved productivity and a better customer experience.
-        </p>
-        <ul class="list-inline list-unstyled social-networks">
-          <li>
-            <a href="#">
-              <div class="icon-social icon-social-facebook normal">
-                <i class="fa fa-facebook"></i>
-              </div>
-              <div class="icon-social hover">
-                <i class="fa fa-facebook"></i>
-              </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              <div class="icon-social icon-social-twitter normal">
-                <i class="fa fa-twitter"></i>
-              </div>
-              <div class="icon-social hover">
-                <i class="fa fa-twitter"></i>
-              </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              <div class="icon-social icon-social-google-plus normal">
-                <i class="fa fa-google-plus"></i>
-              </div>
-              <div class="icon-social hover">
-                <i class="fa fa-google-plus"></i>
-              </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              <div class="icon-social icon-social-youtube normal">
-                <i class="fa fa-youtube-play"></i>
-              </div>
-              <div class="icon-social hover">
-                <i class="fa fa-youtube-play"></i>
-              </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              <div class="icon-social icon-social-linkedin normal">
-                <i class="fa fa-linkedin"></i>
-              </div>
-              <div class="icon-social hover">
-                <i class="fa fa-linkedin"></i>
-              </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              <div class="icon-social icon-social-pinterest normal">
-                <i class="fa fa-pinterest"></i>
-              </div>
-              <div class="icon-social hover">
-                <i class="fa fa-pinterest"></i>
-              </div>
-            </a>
-          </li>
-        </ul>
+        
+        
       </div>
       <div class="col-lg-3 col-md-3">
         <h3>CONTACT</h3>
@@ -88,24 +20,95 @@
       <div class="col-lg-3 col-md-3">
         <h3>LATEST TWEETS</h3>
         <ul class="latest-tweets">
-          <li>
-            <i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar quam sed consequat adipiscing
-          </li>
-          <li>
-            <i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar quam sed consequat adipiscing
-          </li>
+          <% $client.user_timeline("a_LuxuRe").each_with_index do |tweet, i| %>
+            <% if i < 2 %>
+              <li>
+                <i class="fa fa-twitter"></i> <%= tweet.text %>
+              </li>
+            <% end %>
+            <!-- if i < 2 -->
+          <% end %>
+          <!-- each_with_index -->
         </ul>
       </div>
 
       <div class="col-lg-3 col-md-3">
-        <h3>NEWSLETTER</h3>
+        <h3>FIND US</h3>
+        <ul class="list-inline list-unstyled social-networks">
+          <!-- <li>
+            <a href="#">
+              <div class="icon-social icon-social-facebook normal">
+                <i class="fa fa-facebook"></i>
+              </div>
+              <div class="icon-social hover">
+                <i class="fa fa-facebook"></i>
+              </div>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="https://twitter.com/a_LuxuRe">
+              <div class="icon-social icon-social-twitter normal">
+                <i class="fa fa-twitter"></i>
+              </div>
+              <!-- <div class="icon-social hover">
+                <i class="fa fa-twitter"></i>
+              </div> -->
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="#">
+              <div class="icon-social icon-social-google-plus normal">
+                <i class="fa fa-google-plus"></i>
+              </div>
+              <div class="icon-social hover">
+                <i class="fa fa-google-plus"></i>
+              </div>
+            </a>
+          </li> -->
+
+          <!-- <li>
+            <a href="https://www.youtube.com/channel/UCBMeC054Dra12ncD2aqs4Ow">
+              <div class="icon-social icon-social-youtube normal">
+                <i class="fa fa-youtube-play"></i>
+              </div>
+              <div class="icon-social hover">
+                <i class="fa fa-youtube-play"></i>
+              </div>
+            </a>
+          </li> -->
+
+          <li>
+            <a href="https://www.linkedin.com/company/%C3%A4luxur%C4%93">
+              <div class="icon-social icon-social-linkedin normal">
+                <i class="fa fa-linkedin"></i>
+              </div>
+             <!--  <div class="icon-social hover">
+                <i class="fa fa-linkedin"></i>
+              </div> -->
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.pinterest.com/luxur1550/consigning-tips/">
+              <div class="icon-social icon-social-pinterest normal">
+                <i class="fa fa-pinterest"></i>
+              </div>
+              <!-- <div class="icon-social hover">
+                <i class="fa fa-pinterest"></i>
+              </div> -->
+            </a>
+          </li>
+        </ul>
+        <!-- <h3>NEWSLETTER</h3>
         <p>Type your email address below and subscribe to our newsletter</p>
         <div class="input-group">
           <input type="text" placeholder="Email" class="form-control">
           <span class="input-group-btn">
             <button class="btn btn-primary" type="button">Go!</button>
           </span>
-        </div><!-- /input-group -->
+        </div> -->
       </div>
     </div><!-- /.row -->
 
@@ -120,8 +123,8 @@
         <p>äLuxuRē and aluxurelife.com are service marks of Copula Systems, LLC</p>
       </div>
       <div class="col-md-2">
-        <p class="legal"><a href="/privacy_policy" rel="nofollow">Privacy Policy</a></p>
-        <p class="legal"><a href="/terms_and_conditions" rel="nofollow">Terms and Conditions</a></p>
+        <p class="legal"><a href="/privacy_policy" rel="nofollow" style="text-decoration: underline;">Privacy Policy</a></p>
+        <p class="legal"><a href="/terms_and_conditions" rel="nofollow" style="text-decoration: underline;">Terms and Conditions</a></p>
       </div>
     </div><!-- /.row -->
   </div>

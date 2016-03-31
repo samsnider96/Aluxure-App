@@ -1,13 +1,13 @@
 <h1>Select Company</h1>
 
-<div class="list-group" style="cursor: pointer; cursor: hand;">
+<div class="list-group scrollable" style="cursor: pointer; cursor: hand;">
 
   <% @companies.each do |company| %>
 
     <a class="list-group-item" id="company_<%= company.id %>">
       <div class="row">
 
-        <div class="col-xs-2">
+        <div class="col-xs-4 col-sm-2">
           <div class="thumbnail">
             <% if company.photo.nil? %>
               <%= image_tag 'shirt.png', class: 'item_image_sm' %>
@@ -17,12 +17,44 @@
           </div>
         </div>
 
-        <div class="col-xs-10">
-          <h2><%= company.name %></h2>
-          <p><%= company.description %></p>
-        </div>
+        <div class="col-xs-8 col-sm-10">
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <h3><%= company.name %></h3>
+              <ul class="no_bullets">
+                <%= ("<li><strong>Phone:</strong> " + company.phone + "</li>").html_safe %>
+                <%= ("<li><strong>Email:</strong> " + company.email + "</li>").html_safe %>
+                <%= ("<li><strong>Website:</strong> " + company.url + "</li>").html_safe unless company.url.empty? %>
+                <%= ("<li><strong>Number of Locations:</strong> " + company.number_of_locations + "</li>").html_safe %>
+              </ul>
+            </div>
 
+            <div class="col-xs-12 col-md-6">
+              <div class="panel">
+                <div class="panel-body">
+                  <ul class="no_bullets">
+                    <strong>Address</strong>
+                    <%= ("<li>" + company.line_1 + "</li>").html_safe unless company.line_1.empty? %>
+                    <%= ("<li>" + company.line_2 + "</li>").html_safe unless company.line_2.empty?  %>
+                    <%= ("<li>" + company.line_3 + "</li>").html_safe unless company.line_3.empty? %>
+                    <%= ("<li>" + company.city + ", ").html_safe %>
+                    <%= ("<li>" + company.county_province + ", ").html_safe unless company.county_province.empty? %>
+                    <%= ("<li>" + company.zip_or_postcode + "</li>").html_safe unless company.zip_or_postcode.empty? %>
+                    <%= ("<li>" + company.country + "</li>").html_safe unless company.country == "US" %>
+                    <%= ("<li>" + company.other_address_details + "</li>").html_safe unless company.other_address_details.empty? %>
+                  </ul>
+                </div>
+                <!-- panel-body -->
+              </div>
+              <!-- panel -->
+            </div>
+            <!-- col-xs-12 col-md-6 -->
+          </div>
+          <!-- row -->
+        </div>
+        <!-- col-xs-10 -->
       </div>
+      <!-- row -->
     </a>
 
     <script>

@@ -29,14 +29,19 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @images ||= ProductImage.where(image_upload_id: @item.image_upload_id)
   end
 
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    return redirect_to items_path if @item.save
-    flash[:danger] = "Woops, looks like something went wrong. Please try again."
-    render :edit
+    if @item.save
+      flash[:success] = "Item updated."
+      redirect_to items_path
+    else
+      flash[:danger] = "Woops, looks like something went wrong. Please try again."
+      render :edit
+    end
   end
 
   def destroy
@@ -49,6 +54,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :brand, :type, :color, :size, :material, :condition, :description, :category, :image_upload_id, :alterations)
+    params.require(:item).permit(:user_id, :brand, :type, :color, :size, :material, :condition, :description, :category, :image_upload_id, :alterations, :gender, :sleeve_length, :inseam_length, :suit_length, :shoe_width, :sub_category)
   end
 end

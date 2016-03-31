@@ -41,6 +41,9 @@ gem 'bootstrap_form'
 # easier forms
 gem 'simple_form'
 gem 'country_select'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
 
 # image uploading
 gem 'carrierwave'
@@ -52,6 +55,11 @@ gem "figaro"
 gem 'fog', '~> 1.37'
 
 gem 'stripe'
+
+gem 'twitter'
+
+# Active Admin
+gem 'activeadmin', github: 'activeadmin'
 
 # datepicker
 # gem 'momentjs-rails', '>= 2.9.0'
