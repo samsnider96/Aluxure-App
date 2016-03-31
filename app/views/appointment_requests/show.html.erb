@@ -2,7 +2,31 @@
 <hr>
 
 <div class="row">
+
   <div class="col-xs-12 col-md-4">
+    <div class="well">
+      <div class="row profile_container">
+        <div class="col-xs-4">
+          <%= image_tag @company.photo, class: 'item_image_sm img_circle' %>
+        </div>
+        <div class="col-xs-8">
+          <h5><%= @company.name %></h5>
+        </div>
+      </div>
+      <!-- row -->
+
+      <div class="row profile_container">
+        <div class="col-xs-4">
+          <%= image_tag @user.photo, class: 'item_image_sm img_circle' %>
+        </div>
+        <div class="col-xs-8">
+          <h5><%= fullname(@user) %></h5>
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- well -->
+
     <div class="well">
       <h3><i class="fa fa-calendar"></i> Appointment Details</h3>
       <ul style="list-style-type:none;padding-left:0px;">
