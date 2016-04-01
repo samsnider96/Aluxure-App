@@ -6,7 +6,4 @@ class AppointmentItem < ActiveRecord::Base
   validates :appointment_request_id, :item_id, presence: true
 
   STATUS = [ "Pending", "Accepted", "Declined", "On Display", "Sold"]
-
-  # STATUS = { pending: "Pending", accepted: "Accepted", declined: "Declined", on_display: "On Display", sold: "Sold" }
-
 end
