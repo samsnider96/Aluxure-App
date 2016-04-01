@@ -11,6 +11,12 @@ permit_params :email, :password, :password_confirmation, :first_name, :last_name
     column :phone
     column :company_id
     column :paid
+    column "Item Count", sortable: 'items_count' do |user|
+      user.items_count
+    end
+    column "Appointment Request Count", sortable: 'appointment_request_count' do |user|
+      user.appointment_requests_count
+    end
     column :photo
     column :current_sign_in_at
     column :sign_in_count
@@ -24,6 +30,12 @@ permit_params :email, :password, :password_confirmation, :first_name, :last_name
   filter :phone
   filter :company_id
   filter :paid
+  filter "Item Count", sortable: 'items_count' do |user|
+    user.items_count
+  end
+  filter "Appointment Request Count", sortable: 'appointment_request_count' do |user|
+    user.appointment_requests_count
+  end
   filter :photo
   filter :current_sign_in_at
   filter :sign_in_count

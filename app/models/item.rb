@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :product_images, dependent: :destroy
   has_many :appointment_items, dependent: :destroy
   has_many :appointment_reqeusts, through: :appointment_items
