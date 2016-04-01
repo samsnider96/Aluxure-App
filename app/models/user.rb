@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   mount_uploader :photo, PhotoUploader
 
-  has_many :items
-  has_many :appointment_requests
-  has_many :comments
-  has_many :image_uploads
+  has_many :items, dependent: :destroy
+  has_many :appointment_requests, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :image_uploads, dependent: :destroy
+  has_many :read_statuses, dependent: :destroy
+
   belongs_to :company
 
   validates :first_name, :last_name, :phone, presence: true

@@ -9,7 +9,7 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3><%= Company.find(incoming_request.company_id).name %>
+          <h3><%= unread(incoming_request) %> <%= Company.find(incoming_request.company_id).name %>
             <span class="pull-right"><%= status_icon(incoming_request) %></span>
             </h3>
         </div>
@@ -43,7 +43,7 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3><%= Company.find(appointment_request.company_id).name %>
+            <h3><%= unread(appointment_request) %><%= Company.find(appointment_request.company_id).name %>
               <span class="pull-right"><%= status_icon(appointment_request) %></span>
               </h3>
           </div>
