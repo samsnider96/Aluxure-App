@@ -87,14 +87,17 @@
     
     var selected = $('#item_category option:selected').text();
 
-    if(selected == "Shoes" && isMens()){
+    if(selected === "Shoes" && isMens()){
+
         $("label[for=item_sub_category], #item_sub_category").show();
         $("#item_sub_category").html(mens_shoe_categories);
         $("#item_brand").html(mens_shoe_brands);
         $("#item_material").html(mens_shoe_materials);
         $("#item_size").html(mens_shoe_sizes);
         $("label[for=item_shoe_width], #item_shoe_width").show();
-    } else if(selected == "Shoes" && !isMens()){
+
+    } else if(selected === "Shoes" && !isMens()){
+
         $("label[for=item_sub_category], #item_sub_category").show();
         $("#item_sub_category").html(womens_shoe_categories);
         $("#item_brand").html(womens_shoe_brands);
@@ -102,24 +105,42 @@
         $("#item_size").html(womens_shoe_sizes);
         $("label[for=item_shoe_width], #item_shoe_width").show();
         $("#item_shoe_width").html(womens_shoe_width);
-    } else if(selected == "Bags" && !isMens()) {
+
+    } else if(selected === "Bags" && !isMens()) {
+
         $("label[for=item_sub_category], #item_sub_category").show();
         $("#item_sub_category").html(womens_bag_categories);
         $("#item_brand").html(womens_handbag_brands);
-    } else if (selected == "Shirts" && isMens()){
+
+    } else if (selected === "Shirts" && isMens()){
+
         $("label[for=item_sub_category], #item_sub_category").hide();
         $("#item_sub_category").val("")
         $("#item_size").html(mens_shirt_sizes);
         $("label[for=item_sleeve_length], #item_sleeve_length").show();
-    } else if(selected == "Pants" && isMens()) {
+
+    } else if(selected === "Pants" || selected === "Shorts" && isMens()) {
+
         $("#item_size").html(mens_pants_sizes);
-        $("label[for=item_inseam_length], #item_inseam_length").show();
-    } else if((selected == "Outerwear" || selected == "Sport Coat") && isMens()) {
+        if(selected === "Pants") {
+          $("label[for=item_inseam_length], #item_inseam_length").show();
+        }
+    } else if((selected === "Outerwear" || selected === "Sport Coat") && isMens()) {
+
         $("#item_size").html(mens_jacket_sizes);
-    } else if(selected == "Suits" && isMens()) {
+
+    } else if(selected === "Suits" && isMens()) {
+
         $("#item_size").html(mens_suit_length);
         $("label[for=item_suit_length], #item_suit_length").show();
+
+    } else {
+      // "Polos & Tees" || "Active Wear" || "Sweaters & Hoodies" || "Swimwear" || "Other" || "Sports Coats" || "Outerwear"
+        $("#item_size").html(mens_shirt_sizes);
+
     }
+
+
   }
 
   $("#item_gender").on('change',function(){
