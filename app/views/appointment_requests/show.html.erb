@@ -106,13 +106,42 @@
                       <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
                     <% end %>
                   </div>
+                  <%= link_to 'View Item', item_path(item) %>
                 </div>
 
                 <div class="col-xs-10">
                   <%= render partial: "items/card", locals: {item: item} %>
-                  <span class="pull-right"><%= link_to 'View', item_path(item) %></span>
-                </div>
+                  <% appointment_item = AppointmentItem.find_by(item_id: item, appointment_request_id: @appointment_request.id) %>
+                  <% if current_user.company_id == @appointment_request.company_id %>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <%= simple_form_for appointment_item, url: item_status_path(item, appointment_request_id: @appointment_request.id), method: :put, remote: true do |f| %>
+                          <%= f.collection_radio_buttons :status, AppointmentItem::STATUS, :to_s, :to_s %>
+                          <%= f.input :item_id, as: :hidden, input_html: { value: item.id } %>
+                          <%= f.input :appointment_request_id, as: :hidden, input_html: { value: @appointment_request.id } %>
+                        <% end %>
 
+                        <script type="text/javascript">
+                          $('#edit_appointment_item_<%= appointment_item.id %>').change(function(){
+                            $.ajax({
+                              url: '/item_statuses/<%= appointment_item.id %>?appointment_request_id=<%= @appointment_request.id %>',
+                              type: 'PUT',
+                              data: $('#edit_appointment_item_<%= appointment_item.id %>').serialize(),
+                              success: function(data) {
+
+                              }
+                            });
+                          });
+                        </script>
+                      </div>
+                      <!-- col-xs-12 col-md-2 -->
+                    </div>
+                    <!-- row -->
+                  <% else %>
+                    <p class="pull-right"><strong><%= item_status(appointment_item) %></strong></p>
+                  <% end %>
+                </div>
+                <!-- col-xs-10 -->
               </div>
               <!-- row -->
             </div>
@@ -128,8 +157,6 @@
   <!-- col-md-8 -->
 </div>
 <!-- row -->
-
-
 
 
 

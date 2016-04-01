@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   resources :company_users, only: [:new, :create]
 
+  resources :item_statuses, only: :update
+
   get 'privacy_policy' => 'static_pages#privacy_policy'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   
