@@ -16,7 +16,7 @@ class AppointmentRequestsController < ApplicationController
 
     @read_status ||= ReadStatus.find_by(user_id: current_user.id, appointment_request_id: @appointment_request.id)
 
-    return @read_status.update(read_on: DateTime.now) if @read_status
+    return @read_status.touch(:read_on) if @read_status
     current_user.read_statuses.create(appointment_request_id: @appointment_request.id, read_on: DateTime.now)      
   end
 
