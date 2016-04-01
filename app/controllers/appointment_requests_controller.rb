@@ -4,7 +4,7 @@ class AppointmentRequestsController < ApplicationController
 
   def index
     @appointment_requests = current_user.appointment_requests.order(start_time: :asc)
-    @incoming_requests = AppointmentRequest.where(company_id: current_user.company_id)
+    @incoming_requests = AppointmentRequest.where(company_id: current_user.company_id).order(start_time: :asc)
   end
 
   def show
@@ -13,6 +13,11 @@ class AppointmentRequestsController < ApplicationController
     @appointment_items = @appointment_request.appointment_items
     @comments = @appointment_request.comments.order(updated_at: :desc)
     @user = User.find(@appointment_request.user_id)
+
+    @read_status ||= ReadStatus.find_by(user_id: current_user.id, appointment_request_id: @appointment_request.id)
+
+    return @read_status.update(read_on: DateTime.now) if @read_status
+    current_user.read_statuses.create(appointment_request_id: @appointment_request.id, read_on: DateTime.now)      
   end
 
   def new
