@@ -68,6 +68,7 @@ FactoryGirl.define do
   factory :appointment_item do
     appointment_request_id 1
     item_id 1
+    status AppointmentItem::STATUS[0]
   end
 
   factory :product_image do 

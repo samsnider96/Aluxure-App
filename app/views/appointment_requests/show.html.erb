@@ -106,13 +106,46 @@
                       <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
                     <% end %>
                   </div>
+                  <%= link_to 'View Item', item_path(item) %>
                 </div>
 
                 <div class="col-xs-10">
                   <%= render partial: "items/card", locals: {item: item} %>
-                  <span class="pull-right"><%= link_to 'View', item_path(item) %></span>
-                </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <!-- <form>
+                        <input id="item_accepted_<%= item.id %>" name="StatusSwitches_<%= item.id %>" class="BSswitch" type="radio" data-off-text="Accept" data-on-text="Accepted" checked="false">
+                        <input id="item_declined" name="StatusSwitches_<%= item.id %>" class="BSswitch" type="radio" data-off-text="Decline" data-on-text="Declined" checked="false">
+                        <br>
+                        <input id="item_on_display_<%= item.id %>" name="StatusSwitches_<%= item.id %>" class="BSswitch" type="radio" data-off-text="On Display" data-on-text="On Display" checked="false">
+                        <input id="item_sold_<%= item.id %>" name="StatusSwitches_<%= item.id %>" class="BSswitch" type="radio" data-off-text="Sold" data-on-text="Sold" checked="false">
+                      </form> -->
+                      <% appointment_item = AppointmentItem.find_by(item_id: item, appointment_request_id: @appointment_request.id) %>
 
+                      <%= simple_form_for appointment_item, url: item_status_path(item, appointment_request_id: @appointment_request.id), method: :put, remote: true do |f| %>
+                        <%= f.collection_radio_buttons :status, AppointmentItem::STATUS, :to_s, :to_s %>
+                        <%= f.input :item_id, as: :hidden, input_html: { value: item.id } %>
+                        <%= f.input :appointment_request_id, as: :hidden, input_html: { value: @appointment_request.id } %>
+                      <% end %>
+
+                      <script type="text/javascript">
+                        $('#edit_appointment_item_<%= appointment_item.id %>').change(function(){
+                          $.ajax({
+                            url: '/item_statuses/<%= appointment_item.id %>?appointment_request_id=<%= @appointment_request.id %>',
+                            type: 'PUT',
+                            data: $('#edit_appointment_item_<%= appointment_item.id %>').serialize(),
+                            success: function(data) {
+
+                            }
+                          });
+                        });
+                      </script>
+                    </div>
+                    <!-- col-xs-12 col-md-2 -->
+                  </div>
+                  <!-- row -->
+                </div>
+                <!-- col-xs-10 -->
               </div>
               <!-- row -->
             </div>
@@ -128,8 +161,6 @@
   <!-- col-md-8 -->
 </div>
 <!-- row -->
-
-
 
 
 
