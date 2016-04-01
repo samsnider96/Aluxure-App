@@ -6,6 +6,9 @@ permit_params :name, :description, :line_1, :line_2, :line_3, :city, :county_pro
   index do
     selectable_column
     id_column
+    column "Appointment Request Count", sortable: 'appointment_request_count' do |company|
+      company.appointment_requests_count
+    end
     column :name
     column :phone
     column :email
@@ -25,6 +28,9 @@ permit_params :name, :description, :line_1, :line_2, :line_3, :city, :county_pro
     actions
   end
 
+  filter "Appointment Request Count", sortable: 'appointment_request_count' do |company|
+    company.appointment_requests_count
+  end
   filter :name
   filter :phone
   filter :email

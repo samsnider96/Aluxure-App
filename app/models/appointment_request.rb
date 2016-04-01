@@ -1,6 +1,6 @@
 class AppointmentRequest < ActiveRecord::Base
-  belongs_to :company
-  belongs_to :user
+  belongs_to :company, counter_cache: true
+  belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
   has_many :appointment_items, dependent: :destroy
   has_many :items, through: :appointment_items
