@@ -10,12 +10,28 @@ RSpec.describe AppointmentRequestsController, type: :controller do
   end
 
   describe "GET #show" do
+    before :each do
+      @company = FactoryGirl.create(:company)
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @appointment_request = FactoryGirl.create(:appointment_request)
+    end
+
     it "should result in 200 OK" do
-      company = FactoryGirl.create(:company)
-      sign_in FactoryGirl.create(:user)
-      appointment_request = FactoryGirl.create(:appointment_request)
-      get :show, id: appointment_request.id, company_id: company.id
+      get :show, id: @appointment_request.id, company_id: @company.id
       expect(response).to render_template :show
+    end
+
+    it "should create a new read status object if user doesn't have one for the appointment request" do
+      expect{
+        get :show, id: @appointment_request.id, company_id: @company.id
+      }.to change(ReadStatus, :count).by(1)
+    end
+
+    it "should update the new read status object on page visit" do
+      read_status = ReadStatus.create(user_id: @user.id, appointment_request_id: @appointment_request.id)
+      get :show, id: @appointment_request.id, company_id: @company.id
+      expect(read_status.reload.read_on.to_i).to eq(DateTime.now.to_i)
     end
   end 
 
