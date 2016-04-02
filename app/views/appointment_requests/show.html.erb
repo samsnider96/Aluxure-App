@@ -115,11 +115,24 @@
                   <% if current_user.company_id == @appointment_request.company_id %>
                     <div class="row">
                       <div class="col-xs-12">
-                        <%= simple_form_for appointment_item, url: item_status_path(item, appointment_request_id: @appointment_request.id), method: :put, remote: true do |f| %>
-                          <%= f.collection_radio_buttons :status, AppointmentItem::STATUS, :to_s, :to_s %>
-                          <%= f.input :item_id, as: :hidden, input_html: { value: item.id } %>
-                          <%= f.input :appointment_request_id, as: :hidden, input_html: { value: @appointment_request.id } %>
-                        <% end %>
+                        <!-- accept-charset="UTF-8" action="/item_statuses/<%= item.id %>?appointment_request_id=<%= @appointment_request.id %>" class="simple_form edit_appointment_item" data-remote="true" id="edit_appointment_item_11" method="post" name="edit_appointment_item_11" novalidate="novalidate" -->
+                        <form id="edit_appointment_item_<%= appointment_item.id %>">
+                          <input name="utf8" type="hidden" value="✓">
+                          <input type="radio" name="status_<%= appointment_item.id %>" data-labelauty="Pending|Pending" <%= checked(appointment_item, "Pending") %>>
+                          <input type="radio" name="status_<%= appointment_item.id %>" data-labelauty="Accepted|Accepted" <%= checked(appointment_item, "Accepted") %>>
+                          <input type="radio" name="status_<%= appointment_item.id %>" data-labelauty="Declined|Declined" <%= checked(appointment_item, "Declined") %>>
+                          <input type="radio" name="status_<%= appointment_item.id %>" data-labelauty="On Display|On Display" <%= checked(appointment_item, "On Display") %>>
+                          <input type="radio" name="status_<%= appointment_item.id %>" data-labelauty="Sold|Sold" <%= checked(appointment_item, "Sold") %>>
+                          <div class="form-group hidden appointment_item_item_id">
+                              <input class="hidden form-control form-control" id="appointment_item_item_id" name="appointment_item[item_id]" type="hidden" value="<%= item.id %>">
+                          </div>
+                          <div class="form-group hidden appointment_item_appointment_request_id">
+                              <input class="hidden form-control form-control" id="appointment_item_appointment_request_id" name="appointment_item[appointment_request_id]" type="hidden" value="<%= @appointment_request.id %>">
+                          </div>
+                      </form>
+
+
+                        
 
                         <script type="text/javascript">
                           $('#edit_appointment_item_<%= appointment_item.id %>').change(function(){
@@ -157,6 +170,10 @@
   <!-- col-md-8 -->
 </div>
 <!-- row -->
+
+<script type="text/javascript">
+    $(":radio").labelauty();
+</script>
 
 
 
