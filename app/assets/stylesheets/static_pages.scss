@@ -42,6 +42,16 @@
   margin-top: 140px;
 }
 
+#copy_h1 {
+  font-size: 36px;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-family: 'open_sanslight';
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 
 @mixin blur {
   -webkit-filter: blur(3px);
