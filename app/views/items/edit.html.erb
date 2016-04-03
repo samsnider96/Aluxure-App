@@ -79,7 +79,7 @@ function prepopulate(){
       $("label[for=item_inseam_length], #item_inseam_length").show();
       $("#item_brand").html(mens_apparel_brands);
        $("#item_material").html(mens_apparel_materials);
-  } else if((pre_selected == "Outerwear" || selected == "Sport Coat") && isMens()) {
+  } else if((pre_selected == "Outerwear" || pre_selected == "Sport Coat") && isMens()) {
       $("#item_size").html(mens_jacket_sizes);
       $("#item_brand").html(mens_apparel_brands);
       $("#item_material").html(mens_apparel_materials);

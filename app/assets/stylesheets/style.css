@@ -615,8 +615,8 @@ div.list-posts ul li a:hover{
 }
 
 .section-colored.home{
-/*  background: #423F5C url(../img/section-bg.png) 50% 0 no-repeat;
-*/
+  background: #423F5C;
+
 }
 
 .section-colored.home h2{
