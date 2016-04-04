@@ -13,7 +13,7 @@
             <% if item.product_images.empty? %>
               <%= image_tag 'shirt.png', class: 'item_image_sm' %>
             <% else %>
-              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url %>
             <% end %>
           </div>
         </div>

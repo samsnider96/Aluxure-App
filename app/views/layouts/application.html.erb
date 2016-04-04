@@ -45,6 +45,8 @@
       <% end %>
     <% end %>
 
+    <%= render 'layouts/dashboard_nav' if user_signed_in? %>
+
     <%= yield %>
 
   </div>

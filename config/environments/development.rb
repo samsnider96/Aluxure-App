@@ -1,15 +1,20 @@
 Rails.application.configure do
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.smtp_settings = {
-    :address        => 'smtp.office365.com',
-    :port           => '587',
-    :authentication => :login,
-    :user_name      => ENV['SMTP_USERNAME'],
-    :password       => ENV['SMTP_PASSWORD'],
-    :domain         => 'aluxurelife.com',
-    :enable_starttls_auto => true
-  }
+  # config.action_mailer.smtp_settings = {
+  #   :address        => 'smtp.office365.com',
+  #   :port           => '587',
+  #   :authentication => :login,
+  #   :user_name      => ENV['SMTP_USERNAME'],
+  #   :password       => ENV['SMTP_PASSWORD'],
+  #   :domain         => 'aluxurelife.com',
+  #   :enable_starttls_auto => true
+  # }
+  # default URL options for devise mailer
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -22,15 +27,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # default URL options for devise mailer
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
