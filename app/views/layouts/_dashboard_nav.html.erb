@@ -1,0 +1,11 @@
+<ul class="nav nav-pills">
+  <li role="presentation"><%= link_to 'Home', dashboard_path %></li>
+
+  <% if current_user.is_company_account? && current_user.company_id %>
+    <li role="presentation"><%= link_to "My Company", companies_path(current_user.company_id) %></li>
+  <% elsif !current_user.is_company_account? %>
+    <li role="presentation"><%= link_to 'My Items', items_path %></li>
+  <% end %>
+
+  <li role="presentation"><%= link_to 'My Appointments', appointment_requests_path %></li>
+</ul>

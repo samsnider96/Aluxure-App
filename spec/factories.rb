@@ -35,6 +35,7 @@ FactoryGirl.define do
     email "example@example.com"
     annual_revenue "200000"
     number_of_locations "1"
+    url ""
   end
 
   factory :comment do
@@ -59,6 +60,11 @@ FactoryGirl.define do
     condition "normal"
     description "blah"
     gender "Mens"
+    sub_category ""
+    sleeve_length ""
+    inseam_length ""
+    suit_length ""
+    shoe_width ""
   end
 
   factory :appointment_request do

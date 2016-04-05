@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CompaniesController, type: :controller do
+  render_views
+
   describe "GET #show" do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
@@ -43,20 +45,20 @@ RSpec.describe CompaniesController, type: :controller do
       }.to_not change(Company, :count)
     end
 
-    it "shouldn't create create a new company if a user hasn't paid" do
-      user = FactoryGirl.create(:user)
-      sign_in user
-      expect {
-        post :create, company: FactoryGirl.attributes_for(:company)
-      }.to_not change(Company, :count)
-    end
+    # it "shouldn't create create a new company if a user hasn't paid" do
+    #   user = FactoryGirl.create(:user)
+    #   sign_in user
+    #   expect {
+    #     post :create, company: FactoryGirl.attributes_for(:company)
+    #   }.to_not change(Company, :count)
+    # end
 
-    it "should redirect a user if they haven't paid" do
-      user = FactoryGirl.create(:user)
-      sign_in user
-      post :create, company: FactoryGirl.attributes_for(:company)
-      expect(response).to redirect_to(new_charge_path)
-    end
+    # it "should redirect a user if they haven't paid" do
+    #   user = FactoryGirl.create(:user)
+    #   sign_in user
+    #   post :create, company: FactoryGirl.attributes_for(:company)
+    #   expect(response).to redirect_to(new_charge_path)
+    # end
   end
 
   describe "PUT #update" do

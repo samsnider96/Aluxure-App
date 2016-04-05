@@ -1,3 +1,4 @@
+
 <% if current_user.is_company_account? && current_user.company_id.nil? %>
   <p class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>It looks like you haven't entered your company information yet. Click <%= link_to 'here', new_company_path, style: 'color:#D9534F; text-decoration: underline;' %> to create your company.</p>
 <% end %>

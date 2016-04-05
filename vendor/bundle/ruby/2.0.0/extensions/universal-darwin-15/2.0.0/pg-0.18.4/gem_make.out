@@ -1,10 +1,15 @@
 current directory: /Users/sam828/Desktop/Aluxure-App/vendor/bundle/ruby/2.0.0/gems/pg-0.18.4/ext
-/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby -r ./siteconf20160403-26752-cnaypw.rb extconf.rb --with-pg-config=/opt/local/lib/postgresql91/bin/pg_config
-Using config values from /opt/local/lib/postgresql91/bin/pg_config
-sh: /opt/local/lib/postgresql91/bin/pg_config: No such file or directory
-sh: /opt/local/lib/postgresql91/bin/pg_config: No such file or directory
-checking for libpq-fe.h... no
-Can't find the 'libpq-fe.h header
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby -r ./siteconf20160405-54200-2flvt2.rb extconf.rb --with-pg-config=/Library/PostgreSQL/9.4/bin/pg_config
+Using config values from /Library/PostgreSQL/9.4/bin/pg_config
+sh: /Library/PostgreSQL/9.4/bin/pg_config: No such file or directory
+sh: /Library/PostgreSQL/9.4/bin/pg_config: No such file or directory
+checking for libpq-fe.h... yes
+checking for libpq/libpq-fs.h... yes
+checking for pg_config_manual.h... yes
+checking for PQconnectdb() in -lpq... no
+checking for PQconnectdb() in -llibpq... no
+checking for PQconnectdb() in -lms/libpq... no
+Can't find the PostgreSQL client library (libpq)
 *** extconf.rb failed ***
 Could not create Makefile due to some reason, probably lack of necessary
 libraries and/or headers.  Check the mkmf.log file for more details.  You may
@@ -33,6 +38,12 @@ Provided configuration options:
 	--without-pg-include=${pg-dir}/include
 	--with-pg-lib
 	--without-pg-lib=${pg-dir}/
+	--with-pqlib
+	--without-pqlib
+	--with-libpqlib
+	--without-libpqlib
+	--with-ms/libpqlib
+	--without-ms/libpqlib
 
 To see why this extension failed to compile, please check the mkmf.log which can be found here:
 

@@ -42,7 +42,7 @@ $(function() {
   $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
 });
 
-$("#sign_up").on("click", function(){
+$("#sign_up, #sign_up_nav").on("click", function(){
   $("#image_content").fadeOut(800);
   setTimeout(function(){
     $("#sign_up_options").fadeIn("slow");
@@ -55,8 +55,6 @@ $(function(){
         typeSpeed: 40
     });
 });
-
-$('#copy_h1').t("Simplifying Consignment.",{blink: true});
 
 </script>
 

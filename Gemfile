@@ -92,6 +92,8 @@ group :test do
 end
 
 group :development do
+  # preview email
+  gem "letter_opener"
   # pry for debugging
   gem 'pry'
   # Access an IRB console on exception pages or by using <%= console %> in views
