@@ -24,6 +24,8 @@
   <%= f.input :sub_category, collection: ["N/A"], include_blank: true %>
   <%= f.input :brand, collection: Item::MENS_APPAREL_BRANDS, include_blank: true %>
   <%= f.input :size, collection: Item::MENS_SHIRT_SIZES, include_blank: true %>
+  <%= f.input :jacket_size, collection: Item::MENS_JACKET_SIZES, include_blank: true %>
+  <%= f.input :pants_size, collection: Item::MENS_PANTS_SIZES, include_blank: true %>
   <%= f.input :sleeve_length, collection: Item::MENS_SLEEVE_LENGTH, include_blank: true %>
   <%= f.input :inseam_length, collection: Item::MENS_INSEAM_LENGTH, include_blank: true %>
   <%= f.input :suit_length, collection: Item::MENS_SUIT_LENGTH, include_blank: true %>
