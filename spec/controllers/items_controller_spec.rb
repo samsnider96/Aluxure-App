@@ -14,6 +14,7 @@ def valid_attributes
 end
 
 RSpec.describe ItemsController, type: :controller do
+  render_views
 
   describe "GET #show" do
     it "should result in 200 OK" do
@@ -51,7 +52,7 @@ RSpec.describe ItemsController, type: :controller do
       user = FactoryGirl.create(:user)
       image_upload = user.image_uploads.create(id: 1)
       product_image = FactoryGirl.create(:product_image, image_upload_id: image_upload.id, item_id: nil)
-      product_image_2 = FactoryGirl.create(:product_image, id: 2, image_upload_id: image_upload.id, item_id: nil)
+      product_image_2 = FactoryGirl.create(:product_image, id: 201, image_upload_id: image_upload.id, item_id: nil)
       sign_in user
       expect(product_image.item_id).to be_nil
       expect{

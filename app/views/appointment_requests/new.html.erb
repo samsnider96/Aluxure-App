@@ -5,16 +5,19 @@
 <div class="scrollable well" style="max-height:50vh;">
   <h3>Your Items</h3>
   <% @items.each do |item| %>
+
+    <% product_image = ProductImage.find_by(item_id: item.id) %>
+
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
 
           <div class="col-xs-4 col-sm-2">
             <div class="thumbnail">
-              <% if item.product_images.empty? %>
+              <% if product_image.nil? %>
                 <%= image_tag 'shirt.png', class: 'item_image_sm' %>
               <% else %>
-                <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url, class: 'item_image' %>
+                <%= image_tag product_image.photo.thumb.url, class: 'item_image' %>
               <% end %>
             </div>
           </div>

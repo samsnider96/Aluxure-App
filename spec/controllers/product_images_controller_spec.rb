@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ProductImagesController, type: :controller do
+  render_views
+  
   describe "GET #new" do
     it "should redirect user if not logged in" do
       get :new
