@@ -34,7 +34,6 @@ class Item < ActiveRecord::Base
 
   WOMENS_SHOE_BRANDS = ["andrew stevens", "Arche", "Ash", "BCBGeneration", "Belle", "Bettye Muller", "Carolinna Espinosa", "Charles by Charles David", "Charles David", "Clarks", "Cole Haan", "Dolce Vita", "Donald J Pliner", "Elie Tahari", "Franco Sarto", "French Connection", "Giuseppe Zanotti", "Halston Heritage", "Isola", "Ivanka Trump", "Jack Rogers", "Jimmy Choo", "JOE'S Jeans", "Joie", "Kay Unger", "L.K.Bennett", "Latigo", "Lucky Brand", "Marc Fisher", "New Balance", "Nisolo", "Dr.  Scholl's Collection", "Prada", "PUMA", "Rachel Zoe", "Rebecca Minkoff", "Rockport", "Saint Laurent", "Salvatore Ferragamo", "SeaVees", "Sesto Meucci", "Seychelles", "Sperry", "Steven By Steve Madden", "Tahari", "Tod's", "Tommy Bahama", "Tretorn", "Trina Turk", "UGG", "Valentino", "Vaneli", "Via Spiga", "Vince", "Vince Camuto", "Yves Saint Laurent", "OTHER"]
 
-
   MENS_CATEGORIES = ["Shirts", "Outerwear", "Suits", "Sport Coats", "Sweaters & Hoodies", "Denim", "Active Wear", "Pants", "Polos & Tees", "Shoes", "Shorts", "Swimwear", "OTHER"]
 
   MENS_SHIRT_SIZES = ["S", "M", "L", "XL", "XXL", "XXXL", "15", "15.5", "16", "16.5", "17", "17.5", "18", "18.5", "19", "19.5", "20", "OTHER "]

@@ -86,6 +86,7 @@
   }
 
   function changeFields(){
+    // prepend blank option to prevent nil error
     $("#item_sub_category, #item_shoe_width, #item_sleeve_length, #item_inseam_length, #item_suit_length").prepend("<option value='' selected='selected'></option>");
 
     hideExtraFields();

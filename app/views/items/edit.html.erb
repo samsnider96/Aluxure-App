@@ -49,8 +49,6 @@ function prepopulate(){
     $("#item_category").html(womens_categories);
   }
 
-
-
   var pre_selected = $('#item_category option:selected').text();
   if(pre_selected == "Shoes" && isMens()){
       $("label[for=item_sub_category], #item_sub_category").show();
