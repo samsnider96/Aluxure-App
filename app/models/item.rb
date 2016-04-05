@@ -12,7 +12,6 @@ class Item < ActiveRecord::Base
 
   CONDITION = ["New", "Like New", "Very Good", "Good", "Fair"]
 
-
   WOMENS_CATEGORIES = ["Dress", "Skirt", "Shirt", "Blouse", "Sweater", "Outerwear", "Denim", "Active Wear", "Pants", "Shorts", "Suits", "Blazer", "Swimwear", "Shoes", "Bags", "OTHER"]
 
   WOMENS_BAG_CATEGORIES = ["Handbags", "Shoulder Bags & Hobos", "Totes", "Satchel", "Clutches", "Crossbody", "Backpacks", "Wristlets", "OTHER"]
