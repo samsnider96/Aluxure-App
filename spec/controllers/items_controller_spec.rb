@@ -18,9 +18,11 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "GET #show" do
     it "should result in 200 OK" do
-      sign_in FactoryGirl.create(:user)
-      item = FactoryGirl.create(:item)
-      FactoryGirl.create(:image_upload)
+      user = FactoryGirl.create(:user)
+      sign_in user
+      image_upload = FactoryGirl.create(:image_upload)
+      item = FactoryGirl.create(:item, image_upload_id: image_upload.id)
+      FactoryGirl.create(:image_upload, user_id: user.id)
       get :show, id: item.id
       expect(response).to render_template :show
     end
@@ -65,7 +67,7 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "PUT #update" do
     it "should not let users that don't own the item update the item" do
-      user = FactoryGirl.create(:user, id: 2)
+      user = FactoryGirl.create(:user)
       item = FactoryGirl.create(:item)
       sign_in user
       put :update, { id: item.id, item: FactoryGirl.attributes_for(:item, brand: "YOLO") }
@@ -75,7 +77,7 @@ RSpec.describe ItemsController, type: :controller do
 
     it "should let users that own the item update the item" do
       user = FactoryGirl.create(:user)
-      item = FactoryGirl.create(:item)
+      item = FactoryGirl.create(:item, user_id: user.id)
       sign_in user
       put :update, { id: item.id, item: FactoryGirl.attributes_for(:item, brand: "YOLO") }
       item.reload
@@ -87,7 +89,7 @@ RSpec.describe ItemsController, type: :controller do
 
     it "should let user who owns the item delete the item" do
       user = FactoryGirl.create(:user)
-      item = FactoryGirl.create(:item)
+      item = FactoryGirl.create(:item, user_id: user.id)
       sign_in user
       expect{
         delete :destroy, id: item.id
@@ -95,8 +97,8 @@ RSpec.describe ItemsController, type: :controller do
     end
 
     it "shouldn't let user who doesn't own the item delete the item" do
-      user = FactoryGirl.create(:user, id: 2)
-      item = FactoryGirl.create(:item)
+      user = FactoryGirl.create(:user)
+      item = FactoryGirl.create(:item, user_id: user)
       sign_in user
       expect{
         delete :destroy, id: item.id
@@ -105,8 +107,8 @@ RSpec.describe ItemsController, type: :controller do
 
     it "should delete the item photos after the item has been deleted" do
       user = FactoryGirl.create(:user)
-      item = FactoryGirl.create(:item)
-      product_image = FactoryGirl.create(:product_image)
+      item = FactoryGirl.create(:item, user_id: user.id)
+      product_image = FactoryGirl.create(:product_image, item_id: item.id)
       sign_in user
       expect{
         delete :destroy, id: item.id

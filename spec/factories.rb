@@ -9,7 +9,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    id 1
+    # id 1
     first_name "John"
     last_name  "Doe"
     sequence(:email, 100) { |n| "person#{n}@example.com" }
@@ -20,7 +20,7 @@ FactoryGirl.define do
   end
 
   factory :company do
-    id 1
+    # id 1
     sequence(:name, 100) { |n| "company_#{n}" }
     description "Lorem ipsum"
     line_1 "line_1"
@@ -45,11 +45,11 @@ FactoryGirl.define do
   end
 
   factory :image_upload do
-    id 1
+    # id 1
   end
 
   factory :item do
-    id 1
+    # id 1
     user_id 1
     image_upload_id 1
     brand "brand"
@@ -65,6 +65,8 @@ FactoryGirl.define do
     inseam_length ""
     suit_length ""
     shoe_width ""
+    jacket_size ""
+    pants_size ""
   end
 
   factory :appointment_request do

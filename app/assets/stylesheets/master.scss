@@ -38,6 +38,13 @@
   @include img_circle;
 }
 
+.prof_pic {
+  margin: 0 auto;
+  height: 100px;
+  display: block;
+  border: 3px solid #2F97B1;
+}
+
 .panel-body-dashboard {
   height: 170px;
 }

@@ -21,13 +21,13 @@
 <%= simple_form_for @item, method: :put do |f| %>
   <%= f.input :gender, collection: Item::GENDERS %>
   <%= f.input :category, collection: Item::MENS_CATEGORIES %>
-  <%= f.input :sub_category, collection: ["N/A"] %>
-  <%= f.input :brand, collection: Item::MENS_APPAREL_BRANDS %>
-  <%= f.input :size, collection: Item::MENS_SHIRT_SIZES %>
-  <%= f.input :sleeve_length, collection: Item::MENS_SLEEVE_LENGTH %>
-  <%= f.input :inseam_length, collection: Item::MENS_INSEAM_LENGTH %>
-  <%= f.input :suit_length, collection: Item::MENS_SUIT_LENGTH %>
-  <%= f.input :shoe_width, collection: Item::MENS_SHOE_WIDTH %>
+  <%= f.input :sub_category, collection: ["N/A"], include_blank: true %>
+  <%= f.input :brand, collection: Item::MENS_APPAREL_BRANDS, include_blank: true %>
+  <%= f.input :size, collection: Item::MENS_SHIRT_SIZES, include_blank: true %>
+  <%= f.input :sleeve_length, collection: Item::MENS_SLEEVE_LENGTH, include_blank: true %>
+  <%= f.input :inseam_length, collection: Item::MENS_INSEAM_LENGTH, include_blank: true %>
+  <%= f.input :suit_length, collection: Item::MENS_SUIT_LENGTH, include_blank: true %>
+  <%= f.input :shoe_width, collection: Item::MENS_SHOE_WIDTH, include_blank: true %>
   <%= f.input :color, collection: Item::COLORS %>
   <%= f.input :material, collection: Item::MENS_APPAREL_MATERIALS %>
   <%= f.input :condition, collection: Item::CONDITION %>
@@ -84,11 +84,25 @@ function prepopulate(){
       $("#item_brand").html(mens_apparel_brands);
       $("#item_material").html(mens_apparel_materials);
   } else if(pre_selected == "Suits" && isMens()) {
-      $("#item_size").html(mens_suit_length);
+      $("#item_size").val('');
+      $("label[for=item_size], #item_size").hide();
+      $("label[for=item_inseam_length], #item_inseam_length").show();
       $("label[for=item_suit_length], #item_suit_length").show();
+      $("label[for=item_jacket_size], #item_jacket_size").show();
+      $("label[for=item_pants_size], #item_pants_size").show();
       $("#item_brand").html(mens_apparel_brands);
       $("#item_material").html(mens_apparel_materials);
+  } else if(pre_selected == "Suits" && !isMens()) {
+      $("#item_size").val('');
+      $("label[for=item_size], #item_size").hide();
+      $("label[for=item_inseam_length], #item_inseam_length").show();
+      $("label[for=item_suit_length], #item_suit_length").show();
+      $("label[for=item_jacket_size], #item_jacket_size").show();
+      $("label[for=item_pants_size], #item_pants_size").show();
+      $("#item_brand").html(womens_apparel_brands);
+      $("#item_material").html(womens_apparel_materials);
   } else if(isMens()) {
+      $("#item_size").html(mens_shirt_sizes);
       $("#item_brand").html(mens_apparel_brands);
       $("#item_material").html(mens_apparel_materials);
   } else {

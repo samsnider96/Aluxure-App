@@ -15,7 +15,7 @@ RSpec.describe AppointmentRequestsController, type: :controller do
       @company = FactoryGirl.create(:company)
       @user = FactoryGirl.create(:user)
       sign_in @user
-      @appointment_request = FactoryGirl.create(:appointment_request)
+      @appointment_request = FactoryGirl.create(:appointment_request, company_id: @company.id, user_id: @user.id)
     end
 
     it "should result in 200 OK" do
@@ -39,10 +39,10 @@ RSpec.describe AppointmentRequestsController, type: :controller do
   describe "GET #new" do
     it "should result in 200 OK" do
       company = FactoryGirl.create(:company)
-      item = FactoryGirl.create(:item, id: 1)
+      item = FactoryGirl.create(:item)
       product_image = FactoryGirl.create(:product_image, item_id: item.id)
       sign_in FactoryGirl.create(:user)
-      get :new, company_id: company.id, item_ids: "1"
+      get :new, company_id: company.id, item_ids: item.id.to_s
       expect(response).to render_template :new
     end
   end

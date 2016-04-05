@@ -24,30 +24,8 @@
     </span>
   <% end %>
   <hr>
-  <ul style="list-style-type:none;padding-left:0px">
-    <li><strong>Brand:</strong> <%= @item.brand %></li>
-    <li><strong>Category:</strong> <%= @item.category %></li>
-    <% if @item.sub_category %>
-      <li><strong>Sub Category:</strong> <%= @item.sub_category %></li>
-    <% end %>
-    <li><strong>Color:</strong> <%= @item.color %></li>
-    <li><strong>Size:</strong> <%= @item.size %></li>
-    <% unless @item.sleeve_length.empty? %>
-      <li><strong>Sleeve Length:</strong> <%= @item.sleeve_length %></li>
-    <% end %>
-    <% unless @item.inseam_length.empty? %>
-      <li><strong>Inseam Length:</strong> <%= @item.inseam_length %></li>
-    <% end %>
-    <% unless @item.suit_length.empty? %>
-      <li><strong>Suit Length:</strong> <%= @item.suit_length %></li>
-    <% end %>
-    <% unless @item.shoe_width.empty? %>
-      <li><strong>Shoe Width:</strong> <%= @item.shoe_width %></li>
-    <% end %>
-    <li><strong>Material:</strong> <%= @item.material %></li>
-    <li><strong>Condition:</strong> <%= @item.condition %></li>
-    <li><strong>Description:</strong> <%= @item.description %></li>
-  </ul>
+
+  <%= render partial: 'card', locals: {item: @item} %>
 
   
   <br class="clearfix">

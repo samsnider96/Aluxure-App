@@ -21,7 +21,9 @@
      <div class="panel">
       <div class="panel-body">
         <ul style="list-style-type:none;padding-left:0px">
-          <li><strong>Size:</strong> <%= item.size %></li>
+          <% unless item.size.empty? %>
+            <li><strong>Size:</strong> <%= item.size %></li>
+          <% end %>
           <% unless item.sleeve_length.empty? %>
             <li><strong>Sleeve Length:</strong> <%= item.sleeve_length %></li>
           <% end %>
@@ -30,6 +32,12 @@
           <% end %>
           <% unless item.suit_length.empty? %>
             <li><strong>Suit Length:</strong> <%= item.suit_length %></li>
+          <% end %>
+          <% unless item.jacket_size.empty? %>
+            <li><strong>Jacket Size:</strong> <%= item.jacket_size %></li>
+          <% end %>
+          <% unless item.pants_size.empty? %>
+            <li><strong>Pants Size:</strong> <%= item.pants_size %></li>
           <% end %>
           <% unless item.shoe_width.empty? %>
             <li><strong>Shoe Width:</strong> <%= item.shoe_width %></li>
