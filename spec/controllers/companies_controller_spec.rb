@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CompaniesController, type: :controller do
+  render_views
+
   describe "GET #show" do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)

@@ -14,6 +14,7 @@ def valid_attributes
 end
 
 RSpec.describe ItemsController, type: :controller do
+  render_views
 
   describe "GET #show" do
     it "should result in 200 OK" do

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AppointmentRequestsController, type: :controller do
+  render_views
   describe "GET #index" do
     it "should result in 200 OK" do
       sign_in FactoryGirl.create(:user)
@@ -38,9 +39,10 @@ RSpec.describe AppointmentRequestsController, type: :controller do
   describe "GET #new" do
     it "should result in 200 OK" do
       company = FactoryGirl.create(:company)
-      item = FactoryGirl.create(:item)
+      item = FactoryGirl.create(:item, id: 1)
+      product_image = FactoryGirl.create(:product_image, item_id: item.id)
       sign_in FactoryGirl.create(:user)
-      get :new, company_id: company.id, item_ids: ["1"]
+      get :new, company_id: company.id, item_ids: "1"
       expect(response).to render_template :new
     end
   end
