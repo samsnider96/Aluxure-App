@@ -1,40 +1,49 @@
 <%= image_tag current_user.photo, class: 'item_image img_circle prof_pic' %>
 <h3 class="text-center"><%= fullname(current_user) %></h3>
+<ul class="no_bullets text-center">
+  <li>Member Since: <%= display_date(current_user.created_at) %></li>
+  <li>Number of Items: <%= current_user.items_count %></li>
+</ul>
+
 <hr>
 
-  <div class="list-group">
+<%= paginate @items %>
 
-    <% @items.each do |item| %>
-      
-      <div class="list-group-item" id = "item_<%= item.id %>">
-        <div class="row">
-          <div class="col-xs-4 col-sm-2">
-            <div class="thumbnail">
-              <% if item.product_images.empty? %>
-                <%= image_tag 'shirt.png', class: 'item_image_sm' %>
-              <% else %>
-                <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url %>
-              <% end %>
-            </div>
+<div class="list-group">
+
+  <% @items.each do |item| %>
+    
+    <div class="list-group-item" id = "item_<%= item.id %>">
+      <div class="row">
+        <div class="col-xs-4 col-sm-2">
+          <div class="thumbnail">
+            <% if item.product_images.empty? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url %>
+            <% end %>
           </div>
-
-          <div class="col-xs-8 col-sm-10">
-            <%= render partial: "items/card", locals: {item: item} %>
-
-            <span class="pull-right">
-              <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, edit_product_image_path(id: 1, image_upload_id: item.image_upload_id), style: "margin-right: 10px" %>
-              <%= link_to '<i class="fa fa-chevron-circle-right"></i> Details'.html_safe, item_path(item), style: "margin-right: 10px" %>
-              <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(item), style: "margin-right: 10px" if item.user_id == current_user.id %> 
-              <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: { confirm: "Are you sure?" } %>
-            </span>
-            
-          </div>
-          <!-- col-xs-10 -->
         </div>
-        <!-- row -->
+
+        <div class="col-xs-8 col-sm-10">
+          <%= render partial: "items/card", locals: {item: item} %>
+
+          <span class="pull-right">
+            <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, edit_product_image_path(id: 1, image_upload_id: item.image_upload_id), style: "margin-right: 10px" %>
+            <%= link_to '<i class="fa fa-chevron-circle-right"></i> Details'.html_safe, item_path(item), style: "margin-right: 10px" %>
+            <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(item), style: "margin-right: 10px" if item.user_id == current_user.id %> 
+            <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: { confirm: "Are you sure?" } %>
+          </span>
+          
+        </div>
+        <!-- col-xs-10 -->
       </div>
-      <!-- list-group-item -->
+      <!-- row -->
+    </div>
+    <!-- list-group-item -->
 
-    <% end %>
+  <% end %>
 
-  </div>
+</div>
+
+<%= paginate @items %>

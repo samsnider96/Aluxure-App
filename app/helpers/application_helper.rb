@@ -7,6 +7,10 @@ module ApplicationHelper
   def display_datetime(datetime)
     datetime.strftime("%m/%d/%Y %l:%M %p")
   end
+
+  def display_date(datetime)
+    datetime.strftime("%m/%d/%Y")
+  end
 end
 
 class String

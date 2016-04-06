@@ -16,7 +16,8 @@ deploy:
   provider: heroku
   api_key:
     secure: VNsiYhF17lQ2P4ML6bsoeMUW81auvD/YbM0oRyItz4qSsdwMChadSxXQOrkigPJbMMxIYCM1qTNRVsOxtjXSjXZgjCRiJi3FZDv0TchLEHt2L9F4b257kvfXkuGZ9QQPGENBLOaTbK712tiSqP4IX65IPH89ba9ZC6dhZPRxKohHpmjP4+lFPzY2ZJhgURZRSZEOu4huv4RGmEm+M0wG8n8mA+yOf0GdN7A5XvbyVR7FKNsMKKsRjMwTKbli3BmsL1rsrPGP1B4DpxNrl3QUhkVGQ9APNcs5wx0Vwq8r9OMkIA+QiiWs8Jo5iixFUT0YTbg+APzbUrCyepMp1+/TJFNIc44wVxydSbw7IvRQ4jASTZwNwldUp2saKq6QBNL6cl5PT3UD8QF7/WJjbA8FQWVDeOYEA3rZGxBMcHB846eAW4mHZTcbJL9COiYdHkec8r9PUCLXZH9DjPJ6QZaLNR0PFoTiIrRFubOMWQE+tzX6EXIRaHbk8SJ0w5nsF6PppUaLVjjJH/fBjfCjjPdIUoZwZH3t8YTbFEXK+kzubCrOq6ZWx7U0mER0r1hiTcYJhkZq1kUzTgNye2Ql4JJz8OM5ouiJjNksP+/w7hMyJ2BJQlUXXu6wd+0VrHEAl4xbYxII0x5zVWl8sQvlY1PEZKcjxvuiOcUCFY401xQ+RjE=
-  app: aluxure
+  app: 
+    staging: staging-aluxure
   strategy: git
   run:
   - rake db:migrate

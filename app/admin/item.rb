@@ -21,6 +21,8 @@ permit_params :user_id, :brand, :type, :color, :size, :material, :condition, :de
     column :alterations
     column :description
     column :image_upload_id
+    column :created_at
+    column :updated_at
     actions
   end
 
@@ -40,6 +42,8 @@ permit_params :user_id, :brand, :type, :color, :size, :material, :condition, :de
   filter :alterations
   filter :description
   filter :image_upload_id
+  filter :created_at
+  filter :updated_at
 
 
   # form do |f|
