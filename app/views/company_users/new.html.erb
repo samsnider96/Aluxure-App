@@ -32,7 +32,7 @@
   </div>
 
   <div class="field">
-    <%= f.check_box :terms_and_conditions, label: 'I agree to <a href="/terms_and_conditions" target="_blank">terms and conditions</a>'.html_safe %>
+    <%= f.check_box :terms_and_conditions, label: 'I agree to the <a href="/terms_and_conditions" target="_blank">terms and conditions</a> and <a href="/privacy_policy" target="_blank">privacy policy</a>'.html_safe %>
   </div>
 
   <%= f.hidden_field :type, value: 'CompanyUser' %>
