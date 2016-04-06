@@ -3,8 +3,9 @@ namespace :items do
 
   task add_empty_fields: :environment do
     Item.all.each do |item|
-      item.update(jacket_size: "") unless item.jacket_size
-      item.update(pants_size: "") unless item.pants_size
+      item.update(jacket_size: "") if item.jacket_size.nil?
+      item.update(pants_size: "") if item.pants_size.nil?
+      item.update(sub_category: "") if item.sub_category.nil?
     end
   end
 
