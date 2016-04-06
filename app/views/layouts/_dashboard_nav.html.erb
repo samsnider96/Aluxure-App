@@ -1,4 +1,4 @@
-<ul class="nav nav-pills">
+<ul class="nav nav-pills" style="margin-bottom:30px;">
   <li role="presentation"><%= link_to 'Home', dashboard_path %></li>
 
   <% if current_user.is_company_account? && current_user.company_id %>
@@ -8,4 +8,6 @@
   <% end %>
 
   <li role="presentation"><%= link_to 'My Appointments', appointment_requests_path %></li>
+  <li role="presentation"><%= link_to 'My Profile', user_path(current_user.id) %></li>
+  
 </ul>

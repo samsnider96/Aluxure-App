@@ -1,8 +1,7 @@
-<h1>My Items</h1>
-<%= link_to ('<i class="fa fa-plus-circle"></i> Add New Item').html_safe, new_item_path %>
+<%= image_tag current_user.photo, class: 'item_image img_circle prof_pic' %>
+<h3 class="text-center"><%= fullname(current_user) %></h3>
 <hr>
 
-<div class="scrollable">
   <div class="list-group">
 
     <% @items.each do |item| %>
@@ -36,18 +35,6 @@
       </div>
       <!-- list-group-item -->
 
-      <script type="text/javascript">
-        // $("#item_<%= item.id %>").click(function(){
-        //    window.location = "/items/<%= item.id %>";
-        // });
-
-        // $('.list-group-item').hover(function(){
-        //   $(this).toggleClass('active');
-        // });
-
-      </script>
-
     <% end %>
 
   </div>
-</div>

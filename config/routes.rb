@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   resources :item_statuses, only: :update
 
+  resources :users, only: :show
+
   get 'privacy_policy' => 'static_pages#privacy_policy'
   get 'terms_and_conditions' => 'static_pages#terms_and_conditions'
   
