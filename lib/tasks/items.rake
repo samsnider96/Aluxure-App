@@ -4,7 +4,11 @@ namespace :items do
   task add_empty_fields: :environment do
     Item.all.each do |item|
       item.update(jacket_size: "") if item.jacket_size.nil?
+    end
+    Item.all.each do |item|
       item.update(pants_size: "") if item.pants_size.nil?
+    end
+    Item.all.each do |item|
       item.update(sub_category: "") if item.sub_category.nil?
     end
   end
