@@ -7,7 +7,7 @@
     <li><strong>Email</strong>: <%= current_user.email %></li>
   <% end %>
   <% if current_user.display_phone %>
-    <li><strong>Phone Number</strong>: <%= current_user.phone %></li>
+    <li><strong>Phone Number</strong>: <%= number_to_phone(current_user.phone) %></li>
   <% end %>
 </ul>
 
