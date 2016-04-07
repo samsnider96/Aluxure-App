@@ -11,6 +11,10 @@
   <% end %>
 </ul>
 
+<% if @user == current_user %>
+  <%= link_to '<i class="fa fa-pencil"></i> Edit Settings'.html_safe, edit_registration_path(current_user), style: "text-align: center; display: block; margin-top: 20px;" %>
+<% end %>
+
 <hr>
 
 <%= paginate @items %>
