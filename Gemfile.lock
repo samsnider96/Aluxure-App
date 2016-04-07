@@ -466,6 +466,7 @@ DEPENDENCIES
   fog (~> 1.37)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   letter_opener
   mini_magick
   minitest

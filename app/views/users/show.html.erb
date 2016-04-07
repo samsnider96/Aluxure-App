@@ -1,0 +1,55 @@
+<%= image_tag current_user.photo, class: 'item_image img_circle prof_pic' %>
+<h3 class="text-center"><%= fullname(current_user) %></h3>
+<ul class="no_bullets" style="margin:0 auto; display:table;">
+  <li><strong>Member Since</strong>: <%= display_date(current_user.created_at) %></li>
+  <li><strong>Number of Items</strong>: <%= current_user.items_count %></li>
+  <% if current_user.display_email %>
+    <li><strong>Email</strong>: <%= current_user.email %></li>
+  <% end %>
+  <% if current_user.display_phone %>
+    <li><strong>Phone Number</strong>: <%= current_user.phone %></li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= paginate @items %>
+
+<div class="list-group">
+
+  <% @items.each do |item| %>
+    
+    <div class="list-group-item" id = "item_<%= item.id %>">
+      <div class="row">
+        <div class="col-xs-4 col-sm-2">
+          <div class="thumbnail">
+            <% if item.product_images.empty? %>
+              <%= image_tag 'shirt.png', class: 'item_image_sm' %>
+            <% else %>
+              <%= image_tag ProductImage.find_by(item_id: item.id).photo.thumb.url %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-8 col-sm-10">
+          <%= render partial: "items/card", locals: {item: item} %>
+
+          <span class="pull-right">
+            <%= link_to '<i class="fa fa-plus-circle"></i> Add New Photo'.html_safe, edit_product_image_path(id: 1, image_upload_id: item.image_upload_id), style: "margin-right: 10px" %>
+            <%= link_to '<i class="fa fa-chevron-circle-right"></i> Details'.html_safe, item_path(item), style: "margin-right: 10px" %>
+            <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_item_path(item), style: "margin-right: 10px" if item.user_id == current_user.id %> 
+            <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, item_path(item), method: :delete, data: { confirm: "Are you sure?" } %>
+          </span>
+          
+        </div>
+        <!-- col-xs-10 -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- list-group-item -->
+
+  <% end %>
+
+</div>
+
+<%= paginate @items %>

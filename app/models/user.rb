@@ -18,6 +18,19 @@ class User < ActiveRecord::Base
 
   validates :terms_and_conditions, acceptance: true
 
+  store_accessor :settings, :display_email, :display_phone
+
+
+  def display_phone
+    return (super == '1') if %w{1 0}.include? super
+    super
+  end  
+
+  def display_email
+    return (super == '1') if %w{1 0}.include? super
+    super
+  end  
+
   def is_company_account?
     return false unless self.type == "CompanyUser"
     true

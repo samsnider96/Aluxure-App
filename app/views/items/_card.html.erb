@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-md-6">
     <div class="panel">
       <div class="panel-body">
-        <ul style="list-style-type:none;padding-left:0px">
+        <ul class="no_bullets">
           <li><strong>Brand:</strong> <%= item.brand %></li>
           <li><strong>Category:</strong> <%= item.category %></li>
           <% unless item.sub_category.empty? %>
@@ -20,7 +20,7 @@
   <div class="col-xs-12 col-md-6">
      <div class="panel">
       <div class="panel-body">
-        <ul style="list-style-type:none;padding-left:0px">
+        <ul class="no_bullets">
           <% unless item.size.empty? %>
             <li><strong>Size:</strong> <%= item.size %></li>
           <% end %>

@@ -58,6 +58,9 @@ gem 'stripe'
 
 gem 'twitter'
 
+# kaminari for pagination
+gem 'kaminari'
+
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
 

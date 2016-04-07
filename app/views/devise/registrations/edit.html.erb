@@ -29,6 +29,16 @@
     <%= f.email_field :email %>
   </div>
 
+  <div class="field">
+    <%= f.label 'Privacy Settings' %>
+
+    <%= f.fields_for :settings do |settings| %>
+      <%= settings.check_box :display_email, label: 'Show Email Address in Profile', checked: resource.display_email %>
+      <%= settings.check_box :display_phone, label: 'Show Phone Number in Profile', checked: resource.display_phone %>
+    <% end %>
+
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -41,9 +51,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.password_field :current_password, autocomplete: "off", help: "(we need your current password to confirm your changes)" %>
-  </div>
 
   <div class="actions">
     <%= f.submit "Update", class: 'btn btn-success' %>
