@@ -20,7 +20,7 @@
           <%= image_tag @user.photo, class: 'item_image_sm img_circle' %>
         </div>
         <div class="col-xs-8">
-          <h5><%= fullname(@user) %></h5>
+          <h5><%= link_to fullname(@user), user_path(@user) %></h5>
         </div>
       </div>
       <!-- row -->
